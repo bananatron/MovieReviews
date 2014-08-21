@@ -1,0 +1,1 @@
+Experimental app for creating short movie reviews/summaries in less than 140 characters.
