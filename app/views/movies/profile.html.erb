@@ -1,0 +1,16 @@
+<h1>Movies#profile</h1>
+<p>Will display movie profile goods - reviews for that movie, etc. etc..</p>
+
+<h2>All reviews for <%= @movies.name   %></h2>
+
+<% Review.where(movie: @movies.name).order(:score).limit(20).each do |r|%>
+  
+<table>
+  <tr>
+    <td><%= r.summary %></td>
+  </tr>
+</table>
+
+<% end %>
+
+

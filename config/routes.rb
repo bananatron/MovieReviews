@@ -4,7 +4,8 @@ Rails.application.routes.draw do
 
   root :to => "reviews#index"
 
-  get 'user/:id' => 'users#profile'
+  get '/movie/:id' => 'movies#profile'
+  get '/user/:id' => 'users#profile'
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

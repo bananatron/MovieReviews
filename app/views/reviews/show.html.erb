@@ -20,5 +20,9 @@
   <%= @review.summary %>
 </p>
 
+<p>
+  <strong>Posted by  <%= User.find(@review.user_id).username %> </strong>
+</p>
+
 <%= link_to 'Edit', edit_review_path(@review) %> |
 <%= link_to 'Back', reviews_path %>
