@@ -1,2 +1,16 @@
-<h1>Users#profile</h1>
-<p>Will display user profile goods.</p>
+<h2> <%= current_user.username %>'s Profile </h2>
+
+<!-- @user_reviews = current_user.reviews -->
+
+<strong><p>Most recent reviews by <%= current_user.username %>:</p></strong>
+
+<% @user_reviews.each do |review| %>
+<table>
+  <tr>
+    <td><%= review.summary %>
+    </td>
+  </tr>
+</table>
+<% end %>
+
+<p>Users#profile</p>
