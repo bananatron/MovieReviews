@@ -22,12 +22,37 @@ class ReviewsController < ApplicationController
   def edit
   end
 
+  
   # POST /reviews
   # POST /reviews.json
+  
+  #Creates movie if no movie matching name is found
+   def createMovie(name)
+    Movie.create(name: name)
+  end
+  
+  #Finds if the movie exists and ties the movie_id to the new review on 'create' method
+  #If movie doesn't exist by exact name, it creates movie with that name & assigns movie_id.
+  #ENH(Need to factor 'the')
+  def getMovieName
+    reviewname = @review.movie
+    mq = Movie.where(name: reviewname)
+    if mq.first != nil
+      mid = mq.first.id
+      @review.movie_id = mid
+    else
+      nm = createMovie(reviewname)
+      @review.movie_id = nm.id
+    end
+  end
+
+  
   def create
     @review = Review.new(review_params)
     @review.user_id = current_user.id
     @review.score = 1
+    getMovieName
+    
     
     respond_to do |format|
       if @review.save
