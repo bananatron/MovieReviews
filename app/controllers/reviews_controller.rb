@@ -22,10 +22,6 @@ class ReviewsController < ApplicationController
   def edit
   end
 
-  
-  # POST /reviews
-  # POST /reviews.json
-  
   #Creates movie if no movie matching name is found
    def createMovie(name)
     Movie.create(name: name)
@@ -45,15 +41,15 @@ class ReviewsController < ApplicationController
       @review.movie_id = nm.id
     end
   end
-
-  
+ 
+  # POST /reviews
+  # POST /reviews.json
   def create
     @review = Review.new(review_params)
     @review.user_id = current_user.id
     @review.score = 1
     getMovieName
-    
-    
+
     respond_to do |format|
       if @review.save
         
