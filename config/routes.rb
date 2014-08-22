@@ -1,11 +1,20 @@
 Rails.application.routes.draw do
   devise_for :users
   resources :reviews
+  
+  resources :votes
+  
+  #Votes
+  #get '/votes(.:format)' => 'votes#show'
+ # post '/votes(.:format)' => 'votes#create'
 
   root :to => "reviews#index"
-
+  
   get '/movie/:id' => 'movies#profile', as: :movie
   get '/users/:id' => 'users#profile', as: :user
+  
+  
+  
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

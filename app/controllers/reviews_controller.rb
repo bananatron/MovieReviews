@@ -11,6 +11,8 @@ class ReviewsController < ApplicationController
   # GET /reviews/1
   # GET /reviews/1.json
   def show
+    @review = Review.find(params[:id])
+    #redirect_to :back
   end
 
   # GET /reviews/new
