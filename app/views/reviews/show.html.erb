@@ -1,6 +1,6 @@
 <p>
   <strong>Movie:</strong>
-  <a href="/movie/<%=@review.movie_id%>"><%= @review.movie %></a>
+  <%= link_to @review.movie.name, @review.movie %>
 </p>
 
 <p>
@@ -19,7 +19,7 @@
 </p>
 
 <p>
-  <strong>Posted by  <a href="/user/<%=User.find(@review.user_id).id %>"><%= User.find(@review.user_id).username %></a> </strong>
+  <strong>Posted by  <a href="/users/<%=User.find(@review.user_id).id %>"><%= User.find(@review.user_id).username %></a> </strong>
 </p>
 
 <%= link_to 'Edit', edit_review_path(@review) %> |

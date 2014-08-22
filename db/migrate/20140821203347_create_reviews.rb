@@ -2,8 +2,8 @@ class CreateReviews < ActiveRecord::Migration
   def change
     create_table :reviews do |t|
       t.string :movie
-      t.integer  :rating
-      t.integer  :score
+      t.integer :rating
+      t.integer :score
       t.string :summary
 
       t.timestamps

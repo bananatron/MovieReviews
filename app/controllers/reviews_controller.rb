@@ -31,13 +31,13 @@ class ReviewsController < ApplicationController
   #If movie doesn't exist by exact name, it creates movie with that name & assigns movie_id.
   #ENH(Need to factor 'the')
   def getMovieName
-    reviewname = @review.movie
-    mq = Movie.where(name: reviewname)
+    review_name = @review.movie
+    mq = Movie.where(name: review_name)
     if mq.first != nil
       mid = mq.first.id
       @review.movie_id = mid
     else
-      nm = createMovie(reviewname)
+      nm = createMovie(review_name)
       @review.movie_id = nm.id
     end
   end
