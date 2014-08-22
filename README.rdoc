@@ -1,3 +1,14 @@
+Things to IMPL:
+- Voting
+- User movie mapper
+- Username login
+- Movie search
+
+Then:
+- API calls
+- Style
+
+
 == README
 
 This README would normally document whatever steps are necessary to get the

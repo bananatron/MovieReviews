@@ -19,7 +19,7 @@
 </p>
 
 <p>
-  <strong>Posted by  <a href="/users/<%=User.find(@review.user_id).id %>"><%= User.find(@review.user_id).username %></a> </strong>
+  <strong>Posted by  <%= link_to @review.user.username, @review.user %></strong>
 </p>
 
 <%= link_to 'Edit', edit_review_path(@review) %> |
