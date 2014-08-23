@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :reviews
-  
-  resources :votes
+  resources :reviews do
+    member do
+      post 'upvote'
+    end
+  end
   
   #Votes
   #get '/votes(.:format)' => 'votes#show'

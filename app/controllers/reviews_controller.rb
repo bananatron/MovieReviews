@@ -8,6 +8,13 @@ class ReviewsController < ApplicationController
     @reviews = Review.all
   end
 
+  def upvote
+    @review = Review.find(params[:id])
+    @review.votes.create(up:true, user_id:current_user.id)
+    redirect_to :back
+  end
+  
+  
   # GET /reviews/1
   # GET /reviews/1.json
   def show
@@ -25,21 +32,21 @@ class ReviewsController < ApplicationController
   end
 
   #Creates movie if no movie matching name is found
-   def createMovie(name)
+  def create_movie(name)
     Movie.create(name: name)
   end
   
   #Finds if the movie exists and ties the movie_id to the new review on 'create' method
   #If movie doesn't exist by exact name, it creates movie with that name & assigns movie_id.
   #ENH(Need to factor 'the')
-  def getMovieName
+  def get_movie_name
     review_name = @review.movie
     mq = Movie.where(name: review_name)
     if mq.first != nil
       mid = mq.first.id
       @review.movie_id = mid
     else
-      nm = createMovie(review_name)
+      nm = create_movie(review_name)
       @review.movie_id = nm.id
     end
   end
@@ -50,7 +57,7 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @review.user_id = current_user.id
     @review.score = 1
-    getMovieName
+    get_movie_name
 
     respond_to do |format|
       if @review.save
