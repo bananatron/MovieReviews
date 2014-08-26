@@ -5,6 +5,7 @@ class Review < ActiveRecord::Base
   
   validates_presence_of :movie, :summary, :user_id
   validates_uniqueness_of :summary
+  validates_length_of :summary, maximum: 140
 
   def movie_title
     movie.name if movie

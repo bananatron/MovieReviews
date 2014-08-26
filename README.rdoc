@@ -1,6 +1,6 @@
 Things to IMPL:
 - Voting
-- User movie mapper
+- Ratings
 - Username login / change
 - Movie search
 - Character limit on reviews
