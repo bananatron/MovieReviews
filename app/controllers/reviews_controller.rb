@@ -30,12 +30,12 @@ class ReviewsController < ApplicationController
   def edit
   end
 
-  #Creates movie if no movie matching name is found
+  #OLD //Creates movie if no movie matching name is found
   def create_movie(name)
     Movie.create(name: name)
   end
   
-  #Finds if the movie exists and ties the movie_id to the new review on 'create' method
+  #OLD //Finds if the movie exists and ties the movie_id to the new review on 'create' method
   #If movie doesn't exist by exact name, it creates movie with that name & assigns movie_id.
   #ENH(Need to factor 'the')
   def get_movie_name
