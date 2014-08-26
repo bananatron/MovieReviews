@@ -10,7 +10,7 @@
       </ul>
     </div>
   <% end %>
-
+<!-- If i change this first field to movie_id it works, but doesn't save the name-->
   <div class="field">
     <%= f.label :movie %><br>
     <%= f.text_field :movie %>
@@ -23,6 +23,7 @@
     <%= f.label :summary %><br>
     <%= f.text_area :summary %>
   </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

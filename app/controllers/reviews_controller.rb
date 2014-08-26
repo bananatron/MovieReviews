@@ -44,12 +44,25 @@ class ReviewsController < ApplicationController
     mq = Movie.where(name: review_name)
     if mq.first != nil
       mid = mq.first.id
-      @review.movie_id = mid
+      return mid
     else
       nm = create_movie(review_name)
       @review.movie_id = nm.id
     end
   end
+  
+  #def get_movie_name
+  #  review_name = @review.movie
+  #  mq = Movie.where(name: review_name)
+  #  if mq.first != nil
+  #    mid = mq.first.id
+  #    @review.movie_id = mid
+  #  else
+  #    nm = create_movie(review_name)
+  #    @review.movie_id = nm.id
+  #  end
+  #end
+  
  
   # POST /reviews
   # POST /reviews.json
@@ -57,7 +70,7 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @review.user_id = current_user.id
     @review.score = 1
-    get_movie_name
+    get_movie_name = :movie_id
 
     respond_to do |format|
       if @review.save
@@ -103,6 +116,6 @@ class ReviewsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def review_params
-      params.require(:review).permit(:movie, :rating, :score, :summary)
+      params.require(:review).permit(:movie, :movie_id, :rating, :score, :summary)
     end
 end
