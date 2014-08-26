@@ -28,6 +28,7 @@ class ReviewsController < ApplicationController
 
   # GET /reviews/1/edit
   def edit
+    @review = Review.find(params[:id])
   end
 
   #OLD //Creates movie if no movie matching name is found
@@ -58,21 +59,16 @@ class ReviewsController < ApplicationController
     @review.user_id = current_user.id
     @review.score = 1
 
-    respond_to do |format|
-      if @review.save
-        
-        format.html { redirect_to @review, notice: 'Review was successfully created.' }
-        format.json { render :show, status: :created, location: @review }
-      else
-        format.html { render :new }
-        format.json { render json: @review.errors, status: :unprocessable_entity }
-      end
+    if @review.save
+      redirect_to @review, notice: 'Review was successfully created.' 
     end
+
   end
 
   # PATCH/PUT /reviews/1
   # PATCH/PUT /reviews/1.json
   def update
+    
     respond_to do |format|
       if @review.update(review_params)
         format.html { redirect_to @review, notice: 'Review was successfully updated.' }
@@ -102,6 +98,6 @@ class ReviewsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def review_params
-      params.require(:review).permit(:movie, :movie_id, :rating, :score, :summary)
+      params.require(:review).permit(:movie_title, :movie_id, :rating, :score, :summary)
     end
 end

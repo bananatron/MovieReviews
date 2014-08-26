@@ -5,14 +5,14 @@ class Review < ActiveRecord::Base
   
   validates_presence_of :movie, :summary, :user_id
   validates_uniqueness_of :summary
-  
-  #Finds movie with same name, else creates a new movie
-  def movie=(title)
-    if movie = Movie.where(name: title).first
+
+  def movie_title
+    movie.name if movie
+  end
+
+  def movie_title=(title)
+    if movie = Movie.where(name: title).first_or_create
       self[:movie_id] = movie.id
-    else
-      m = Movie.create(:name => title)
-      self[:movie_id] = m.id
     end
   end
 end

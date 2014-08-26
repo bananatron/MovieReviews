@@ -12,9 +12,14 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :movie %><br>
-    <%= f.text_field :movie %>
+    <% if action_name == "new" %>
+      <%= f.label :movie_title, "Movie Title" %><br>
+      <%= f.text_field :movie_title %>
+    <% else %>
+      <%= @review.movie.name %>
+    <% end %>
   </div>
+
   <div class="field">
     <%= f.label :rating %><br>
     <%= f.text_field :rating %>

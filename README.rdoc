@@ -1,8 +1,10 @@
 Things to IMPL:
 - Voting
 - User movie mapper
-- Username login
+- Username login / change
 - Movie search
+- Character limit on reviews
+- Character counter limit on review/summary
 
 Then:
 - API calls
