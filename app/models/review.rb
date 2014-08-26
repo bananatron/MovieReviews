@@ -7,6 +7,11 @@ class Review < ActiveRecord::Base
   validates_uniqueness_of :summary
   
   def movie=(title)
-    self[:movie_id] = Movie.where(name: title).first.id
+    if movie = Movie.where(name: title).first
+      self[:movie_id] = movie.id
+    else
+      m = Movie.create(:name => title)
+      self[:movie_id] = m.id
+    end
   end
 end

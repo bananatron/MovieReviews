@@ -13,8 +13,7 @@ class ReviewsController < ApplicationController
     @review.votes.create(up:true, user_id:current_user.id)
     redirect_to :back
   end
-  
-  
+
   # GET /reviews/1
   # GET /reviews/1.json
   def show
@@ -51,18 +50,6 @@ class ReviewsController < ApplicationController
     end
   end
   
-  #def get_movie_name
-  #  review_name = @review.movie
-  #  mq = Movie.where(name: review_name)
-  #  if mq.first != nil
-  #    mid = mq.first.id
-  #    @review.movie_id = mid
-  #  else
-  #    nm = create_movie(review_name)
-  #    @review.movie_id = nm.id
-  #  end
-  #end
-  
  
   # POST /reviews
   # POST /reviews.json
@@ -70,7 +57,6 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @review.user_id = current_user.id
     @review.score = 1
-    get_movie_name = :movie_id
 
     respond_to do |format|
       if @review.save
