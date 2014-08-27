@@ -3,9 +3,6 @@
   <%= link_to @review.movie.name, @review.movie %>
 </p>
 
-
-
-
 <p>
   <strong>Rating:</strong>
   <%= @review.rating %>
@@ -26,11 +23,15 @@
   <strong>Posted by  <%= link_to @review.user.username, @review.user %></strong>
 </p>
 
-<!-- Only show upvotes if they haven't voted yet -->
-<%  if Vote.where(review_id:@review, user_id:current_user.id).count < 1 %>
-<%= button_to '+1', upvote_review_path(@review), method: :post %>
+<!-- Show appropriate voting button -->
+<% if current_user != nil %>
+  <%  if Vote.where(review_id:@review, user_id:current_user.id).count < 1 %>
+  <%= button_to '+1', upvote_review_path(@review), method: :post %>
+  <% else %>
+  <%= button_to '-1', delete_vote_review_path(@review), method: :post %>
+  <% end %>
 <% else %>
-<%= button_to '-1', delete_vote_review_path(@review), method: :post %>
+Login to vote!<br>
 <% end %>
 
 <%= link_to 'Edit', edit_review_path(@review) %> |
