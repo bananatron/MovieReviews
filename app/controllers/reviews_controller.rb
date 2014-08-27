@@ -39,6 +39,9 @@ class ReviewsController < ApplicationController
   # GET /reviews/new
   def new
     @review = Review.new
+    #Passed in for auto-complete
+    @movie_names = []
+    Movie.all.each { |movie| @movie_names << movie.name }
   end
 
   # GET /reviews/1/edit
