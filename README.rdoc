@@ -1,8 +1,9 @@
 IMPL:
 - Movie search
-- Character counter limit on review/summary
+ All movies should be saved lowercase then formatted probably to avoid case sensetivity.
+ Need to think of algorithm to avoid the/a/of/:, etc.
 
-
+- Character counter limit on review/summary - DONE
 - Voting - DONE
 - Ratings / Score - DONE
 - Username login / change - DONE

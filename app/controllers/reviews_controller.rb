@@ -8,6 +8,7 @@ class ReviewsController < ApplicationController
     @reviews = Review.all
   end
   
+  #Used for upvote and delete_vote
   def calculate_score
     @review.score = @review.votes.count
     @review.save
@@ -50,7 +51,6 @@ class ReviewsController < ApplicationController
     Movie.create(name: name)
   end
 
- 
   # POST /reviews
   def create
     @review = Review.new(review_params)

@@ -36,9 +36,7 @@ Login to vote!<br>
 
 
 <% if @review.updated_at != @review.created_at %>
-
-<p>Edited on: <%= @review.updated_at.to_s(:rfc822) %> PST
-</p>
+<p>Edited on: <%= @review.updated_at.to_s(:rfc822) %> PST</p>
 <% end %>
 
 
