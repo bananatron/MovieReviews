@@ -1,10 +1,13 @@
 IMPL:
-- Voting
-- Ratings / Score
-- Username login / change
 - Movie search
-- Character limit on reviews
 - Character counter limit on review/summary
+
+
+- Voting - DONE
+- Ratings / Score - DONE
+- Username login / change - DONE
+- Character limit on reviews - DONE
+
 
 Then:
 - API calls

@@ -55,10 +55,11 @@ class ReviewsController < ApplicationController
   def create
     @review = Review.new(review_params)
     @review.user_id = current_user.id
-    @review.score = 1
-
+    @review.score = 0
+    
     if @review.save
       redirect_to @review, notice: 'Review was successfully created.' 
+
     else 
       redirect_to :back, notice: 'Something is wrong'
     end

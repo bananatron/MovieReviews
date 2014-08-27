@@ -11,7 +11,7 @@
 <p>
   <strong>Score:</strong>
   <%= @review.score %><br>
-  # of votes = <%= @score %>
+  testing # of votes = <%= @score %>
 </p>
 
 <p>
@@ -33,6 +33,15 @@
 <% else %>
 Login to vote!<br>
 <% end %>
+
+
+<% if @review.updated_at != @review.created_at %>
+
+<p>Edited on: <%= @review.updated_at.to_s(:rfc822) %> PST
+</p>
+<% end %>
+
+
 
 <%= link_to 'Edit', edit_review_path(@review) %> |
 <%= link_to 'Back', reviews_path %>
