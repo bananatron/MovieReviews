@@ -3,12 +3,13 @@ Rails.application.routes.draw do
   resources :reviews do
     member do
       post 'upvote'
+      post 'delete_vote'
     end
   end
   
   #Votes
   #get '/votes(.:format)' => 'votes#show'
- # post '/votes(.:format)' => 'votes#create'
+  #post '/votes(.:format)' => 'votes#create'
 
   root :to => "reviews#index"
   

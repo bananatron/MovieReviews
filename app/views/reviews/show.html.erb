@@ -3,11 +3,8 @@
   <%= link_to @review.movie.name, @review.movie %>
 </p>
 
-<p> <strong>Votes:
-+ 
-  -
 
-</p></strong>
+
 
 <p>
   <strong>Rating:</strong>
@@ -16,7 +13,8 @@
 
 <p>
   <strong>Score:</strong>
-  <%= @review.score %>
+  <%= @review.score %><br>
+  # of votes = <%= @score %>
 </p>
 
 <p>
@@ -28,9 +26,12 @@
   <strong>Posted by  <%= link_to @review.user.username, @review.user %></strong>
 </p>
 
-<% # if Vote.where(review_id:@review).count > 0 ##fix this to be relevant## %>
+<!-- Only show upvotes if they haven't voted yet -->
+<%  if Vote.where(review_id:@review, user_id:current_user.id).count < 1 %>
 <%= button_to '+1', upvote_review_path(@review), method: :post %>
-<% #end %>
+<% else %>
+<%= button_to '-1', delete_vote_review_path(@review), method: :post %>
+<% end %>
 
 <%= link_to 'Edit', edit_review_path(@review) %> |
 <%= link_to 'Back', reviews_path %>

@@ -1,6 +1,6 @@
-Things to IMPL:
+IMPL:
 - Voting
-- Ratings
+- Ratings / Score
 - Username login / change
 - Movie search
 - Character limit on reviews

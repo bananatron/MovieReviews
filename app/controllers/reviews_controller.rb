@@ -13,12 +13,19 @@ class ReviewsController < ApplicationController
     @review.votes.create(up:true, user_id:current_user.id)
     redirect_to :back
   end
+  
+  def delete_vote
+    @review = Review.find(params[:id])
+    #Vote.where(review_id:@review, user_id:current_user.id).destroy_all
+    @review.votes.where(user_id:current_user.id).destroy_all
+    redirect_to :back
+  end
 
   # GET /reviews/1
   # GET /reviews/1.json
   def show
     @review = Review.find(params[:id])
-    #redirect_to :back
+    @score = Vote.where(review_id:(params[:id])).count
   end
 
   # GET /reviews/new

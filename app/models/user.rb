@@ -3,15 +3,12 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
- 
-  #added for username entry
-  validates_uniqueness_of :username, :case_sensitive => false
-  
-  
-  
   has_many :reviews
   has_many :votes
   
+  #added for username entry
+  validates_uniqueness_of :username, :case_sensitive => false
+
   # Virtual attribute for authenticating by either username or email
   # This is in addition to a real persisted field like 'username' added for username login
   attr_accessor :login
