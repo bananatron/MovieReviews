@@ -7,10 +7,16 @@ class ReviewsController < ApplicationController
   def index
     @reviews = Review.all
   end
+  
+  def calculate_score
+    @review.score = @review.votes.count
+    @review.save
+  end
 
   def upvote
     @review = Review.find(params[:id])
     @review.votes.create(up:true, user_id:current_user.id)
+    calculate_score
     redirect_to :back
   end
   
@@ -18,6 +24,7 @@ class ReviewsController < ApplicationController
     @review = Review.find(params[:id])
     #Vote.where(review_id:@review, user_id:current_user.id).destroy_all
     @review.votes.where(user_id:current_user.id).destroy_all
+    calculate_score
     redirect_to :back
   end
 

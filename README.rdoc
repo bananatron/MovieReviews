@@ -10,6 +10,9 @@ Then:
 - API calls
 - Style
 
+Test
+- Password recovery
+
 
 == README
 
