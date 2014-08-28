@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   get '/movies/:id' => 'movies#profile', as: :movie
   get '/users/:id' => 'users#profile', as: :user
   get '/movies/confirm/:id' => 'movies#confirm', as: :confirm_movie
+  get '/movies/confirm/:id/:name' => 'movies#confirm_name', as: :confirm_name_movie
   
   
   

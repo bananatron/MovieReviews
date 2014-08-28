@@ -38,15 +38,19 @@ class MoviesController < ApplicationController
   def index
     @movies = Movie.all
   end
- 
-  
   
   def confirm
     @movies = Movie.find(params[:id])
     @results = find_movie_tmdb(create_core(@movies.name))
   end
   
-  
+  def confirm_name
+    @movies = Movie.find(params[:id])
+    @movies.name = params[:name]
+    @movies.save
+    @review = Review.where(user_id:current_user.id, movie_id:params[:id]).last
+    redirect_to review_path(@review), notice: 'Movie was successfully renamed.' 
+  end
   
   def profile
     @movies = Movie.find(params[:id])

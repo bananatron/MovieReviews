@@ -1,17 +1,3 @@
-<script src="typehead.js"></script>
-<!-- For character count -->
-<script type="text/javascript">
-  $(document).ready(function() {
-  $("#review_summary").keyup(function() {
-    var counter = $("#counter");
-    var charsRemaining = 140 - $(this).val().length;
-    counter.text(charsRemaining);
-    counter.css('color', (charsRemaining < 0) ? 'red' : 'black');
-  });
-});
-</script>
-
-
 <%= form_for(@review) do |f| %>
   <% if @review.errors.any? %>
     <div id="error_explanation">
@@ -42,6 +28,19 @@
     <%= f.label :summary %><br>
     <%= f.text_area :summary %>
   </div>
+
+<script src="typehead.js"></script>
+ <!--For character count -->
+<script type="text/javascript">
+  $(document).ready(function() {
+  $("#review_summary").keyup(function() {
+    var counter = $("#counter");
+    var charsRemaining = 140 - $(this).val().length;
+    counter.text(charsRemaining);
+    counter.css('color', (charsRemaining < 0) ? 'red' : 'black');
+  });
+});
+</script>
 
 <script>
 var substringMatcher = function(strs) {

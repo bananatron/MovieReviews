@@ -4,8 +4,11 @@ IMPL:
  Need to think of algorithm to avoid the/a/of/:, etc.
  > the, a, of, :, mr/mrs/ms, misspellings (there, their)
 
+- add flags to fields so users can flag a review/movie/etc. for review
 
-- Guest users
+- Guest users w/ auto usernames
+
+
 - Character counter limit on review/summary - DONE
 - Voting - DONE
 - Ratings / Score - DONE

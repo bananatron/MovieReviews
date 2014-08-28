@@ -39,7 +39,7 @@ class ReviewsController < ApplicationController
   # GET /reviews/new
   def new
     @review = Review.new
-    #Passed in for title auto-complete in form
+    #Passed in for title auto-complete in form #change to conditional set?
     @movie_names = []
     Movie.all.each { |movie| @movie_names << movie.name }
   end
@@ -54,13 +54,12 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @review.user_id = current_user.id
     @review.score = 0
-    @movie = @review.movie
-    
+
     if @review.save
       if @review.movie.moviedb_id == nil
-        redirect_to confirm_movie_path(@movie)
+        redirect_to confirm_movie_path(@review.movie)
       else
-      redirect_to @review, notice: 'Review was successfully created.' 
+        redirect_to @review, notice: 'Review was successfully created.' 
       end
 
     else 
