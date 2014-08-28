@@ -39,7 +39,7 @@ class ReviewsController < ApplicationController
   # GET /reviews/new
   def new
     @review = Review.new
-    #Passed in for auto-complete
+    #Passed in for title auto-complete in form
     @movie_names = []
     Movie.all.each { |movie| @movie_names << movie.name }
   end
@@ -49,19 +49,19 @@ class ReviewsController < ApplicationController
     @review = Review.find(params[:id])
   end
 
-  #OLD //Creates movie if no movie matching name is found
-  def create_movie(name)
-    Movie.create(name: name)
-  end
-
   # POST /reviews
   def create
     @review = Review.new(review_params)
     @review.user_id = current_user.id
     @review.score = 0
+    @movie = @review.movie
     
     if @review.save
+      if @review.movie.moviedb_id == nil
+        redirect_to confirm_movie_path(@movie)
+      else
       redirect_to @review, notice: 'Review was successfully created.' 
+      end
 
     else 
       redirect_to :back, notice: 'Something is wrong'

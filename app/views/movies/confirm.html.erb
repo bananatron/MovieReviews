@@ -1,0 +1,14 @@
+<h1>Movies#confirm</h1>
+<h2>Some other titles your summary might belong to instead:</h2>
+
+<% @results.each do |r|%>
+
+<table>
+  <tr>
+    <td><%= r.title%> <i>(<%= r.release_date[0...4]%>)</i></td>
+  </tr>
+</table>
+
+<% end %>
+
+

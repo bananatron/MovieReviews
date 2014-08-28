@@ -13,9 +13,9 @@ Rails.application.routes.draw do
 
   root :to => "reviews#index"
   
-  get '/movie/:id' => 'movies#profile', as: :movie
+  get '/movies/:id' => 'movies#profile', as: :movie
   get '/users/:id' => 'users#profile', as: :user
-  
+  get '/movies/confirm/:id' => 'movies#confirm', as: :confirm_movie
   
   
   

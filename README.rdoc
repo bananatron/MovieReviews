@@ -2,7 +2,10 @@ IMPL:
 - Movie search
  All movies should be saved lowercase then formatted probably to avoid case sensetivity.
  Need to think of algorithm to avoid the/a/of/:, etc.
+ > the, a, of, :, mr/mrs/ms, misspellings (there, their)
 
+
+- Guest users
 - Character counter limit on review/summary - DONE
 - Voting - DONE
 - Ratings / Score - DONE
@@ -16,6 +19,7 @@ Then:
 
 Test
 - Password recovery
+- Validations - length etc
 
 
 == README
