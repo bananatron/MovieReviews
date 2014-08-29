@@ -1,31 +1,37 @@
-<h1>Most recent reviews</h1>
-<%= link_to 'New Review', new_review_path %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Movie</th>
-      <th>Rating</th>
-      <th>Score</th>
-      <th>Summary</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<% @reviews.each do |review| %>
+<div class="row">
+    <div class="large-10 columns">
+ 
+       
+      <div class="row">
+        <div class="large-2 columns small-3"><img src="http://placehold.it/80x80&text=[img]"/></div>
+        <div class="large-10 columns">
+          <p><strong><%= review.movie.name %>:</strong>
+            <%= review.summary %></p>
 
-  <tbody>
-    <% @reviews.each do |review| %>
-      <tr>
-        <td><%= review.movie.name %></td>
-        <td><%= review.rating %></td>
-        <td><%= review.score %></td>
-        <td><%= review.summary %></td>
-        <td><%= link_to 'Show', review %></td>
-        <td><%= link_to 'Edit', edit_review_path(review) %></td>
-        <td><%= link_to 'Destroy', review, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+          <ul class="inline-list">
+            <li><%= link_to 'Edit', edit_review_path(review) %></li>
+            <li><%= link_to 'Show', review %></li>
+          </ul>
 
-<br>
+        </div>
+                
+      </div>
+
+      <hr/>      
+    </div>
+ 
+
+
+  
+    <aside class="large-2 columns hide-for-small">
+      <p><%= review.score %></p>
+    </aside>
+ 
+  </div>
+
+ <% end %>
+     
+ 
 
