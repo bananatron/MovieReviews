@@ -47,6 +47,9 @@ class ReviewsController < ApplicationController
   # GET /reviews/1/edit
   def edit
     @review = Review.find(params[:id])
+    if current_user.id != @review.user_id
+      redirect_to :back, notice: "You don't have authorization"
+    end
   end
 
   # POST /reviews
@@ -71,7 +74,6 @@ class ReviewsController < ApplicationController
   # PATCH/PUT /reviews/1
   # PATCH/PUT /reviews/1.json
   def update
-    
     respond_to do |format|
       if @review.update(review_params)
         format.html { redirect_to @review, notice: 'Review was successfully updated.' }
@@ -87,9 +89,8 @@ class ReviewsController < ApplicationController
   # DELETE /reviews/1.json
   def destroy
     @review.destroy
-    respond_to do |format|
-      format.html { redirect_to reviews_url, notice: 'Review was successfully destroyed.' }
-      format.json { head :no_content }
+    if current_user.id != @review.user_id
+      redirect_to :back, notice: "You aren't authorized."
     end
   end
 

@@ -8,9 +8,7 @@
 <table>
   <tr>
     <td>
-      <a href="#">
-        <%= r.title%> <i>(<%= r.release_date[0...4]%>)</i>
-      </a>
+      <%= link_to r.title, @movies.id.to_s+"/"+(r.id.to_s)+"/"+r.title.to_s %> <i>(<%= r.release_date[0...4]%>)</i> - <%= r.id%>
     </td>
   </tr>
 </table>
