@@ -33,8 +33,6 @@ class MoviesController < ApplicationController
     return q
   end
   
-  
-  
   def index
     @movies = Movie.all
   end
@@ -46,12 +44,16 @@ class MoviesController < ApplicationController
   
   def confirm_dbid
     @movies = Movie.find(params[:id])
-    @movies.moviedb_id = params[:moviedb_id]
-    @movies.name = params[:name]
-    @movies.save
-    @review = Review.where(user_id:current_user.id, movie_id:params[:id]).last
-    
-    redirect_to review_path(@review), notice: 'Movie was successfully renamed.' 
+    if @movies.moviedb_id == nil
+      @movies.moviedb_id = params[:moviedb_id]
+      @movies.name = params[:name]
+      @movies.save
+      @review = Review.where(user_id:current_user.id, movie_id:params[:id]).last
+      redirect_to review_path(@review), notice: 'Movie was successfully renamed.' 
+    else 
+       @review = Review.where(user_id:current_user.id, movie_id:params[:id]).last
+      redirect_to review_path(@review), notice: 'Movie already has ID.' 
+    end
   end
   
   def profile

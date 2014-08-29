@@ -52,6 +52,9 @@ class ReviewsController < ApplicationController
     end
   end
 
+  
+
+  
   # POST /reviews
   def create
     @review = Review.new(review_params)
@@ -64,9 +67,8 @@ class ReviewsController < ApplicationController
       else
         redirect_to @review, notice: 'Review was successfully created.' 
       end
-
     else 
-      redirect_to :back, notice: 'Something is wrong'
+      redirect_to :back, notice: 'Something is wrong: ' + @review.errors.first.to_s
     end
 
   end

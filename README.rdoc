@@ -1,14 +1,15 @@
+ISSUES:
+ - Weird moviet titles can cause issues on URL
+ - Movie_id not saving on reviews for movies that aren't in db already
+
 IMPL:
-- Movie search
- All movies should be saved lowercase then formatted probably to avoid case sensetivity.
- Need to think of algorithm to avoid the/a/of/:, etc.
- > the, a, of, :, mr/mrs/ms, misspellings (there, their)
 
+- lock down confirmations
+- Movie autocomplete
 - add flags to fields so users can flag a review/movie/etc. for review
-
 - Guest users w/ auto usernames
 
-
+- Movie search DONE
 - Character counter limit on review/summary - DONE
 - Voting - DONE
 - Ratings / Score - DONE
