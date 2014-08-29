@@ -1,14 +1,15 @@
 ISSUES:
- - Weird moviet titles can cause issues on URL
- - Movie_id not saving on reviews for movies that aren't in db already
+ - Weird movie titles can cause issues on URL
 
 IMPL:
-
-- lock down confirmations
 - Movie autocomplete
+- lock down confirmations
 - add flags to fields so users can flag a review/movie/etc. for review
 - Guest users w/ auto usernames
 
+
+
+ - Movie_id not saving on reviews for movies that aren't in db already (SOLVED)
 - Movie search DONE
 - Character counter limit on review/summary - DONE
 - Voting - DONE

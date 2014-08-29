@@ -1,3 +1,4 @@
+
 <%= form_for(@review) do |f| %>
   <% if @review.errors.any? %>
     <div id="error_explanation">
@@ -10,7 +11,7 @@
       </ul>
     </div>
   <% end %>
-
+<script src="typehead.js"></script>
 <script>
 var substringMatcher = function(strs) {
   return function findMatches(q, cb) {
@@ -40,15 +41,15 @@ $('#title .typeahead').typeahead({
 });
   </script>
 
-
-<div class="field">
+<div class="field" id="title">
     <% if action_name == "new" %>
       <%= f.label :movie_title, "Movie Title" %><br>
-      <%= f.text_field :movie_title %>
+  <%= f.text_field :movie_title, class: "typeahead" %>
     <% else %>
       <%= @review.movie.name %>
     <% end %>
   </div>
+
 
 
   <div class="field">
@@ -60,7 +61,6 @@ $('#title .typeahead').typeahead({
     <%= f.text_area :summary %>
   </div>
 
-<script src="typehead.js"></script>
  <!--For character count -->
 <script type="text/javascript">
   $(document).ready(function() {
