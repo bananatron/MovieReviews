@@ -33,6 +33,7 @@ class ReviewsController < ApplicationController
   # GET /reviews/1.json
   def show
     @review = Review.find(params[:id])
+    @movie = @review.movie
     @score = Vote.where(review_id:(params[:id])).count
   end
 
@@ -51,8 +52,6 @@ class ReviewsController < ApplicationController
       redirect_to @review, notice: "You don't have authorization"
     end
   end
-
-  
 
   
   # POST /reviews
@@ -91,8 +90,17 @@ class ReviewsController < ApplicationController
   # DELETE /reviews/1.json
   def destroy
     @review.destroy
+    
     if current_user.id != @review.user_id
-      redirect_to :back, notice: "You aren't authorized."
+      redirect_to @review, notice: "You aren't authorized."
+    else 
+      redirect_to action: "index", notice: "Review removed."
+    end 
+    #If no other reviews for movie & it's a useless entry (without api id), destroy it
+    @recent_movie = Movie.where(id:@review.movie_id).last
+    @reviews_remaining = Review.where(movie_id:@review.movie_id).count
+    if @reviews_remaining < 1 && @recent_movie.moviedb_id == nil
+      @recent_movie.destroy
     end
   end
 

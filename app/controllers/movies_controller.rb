@@ -36,6 +36,10 @@ class MoviesController < ApplicationController
   
   def confirm
     @movie = Movie.find(params[:id])
+    #Don't call api results unless you need to.
+    if @movie.moviedb_id != nil
+      redirect_to movie_path(@movie), notice: 'Movie already has ID.'
+    end
     @results = find_movie_tmdb(create_core(@movie.name))
   end
   
@@ -44,26 +48,23 @@ class MoviesController < ApplicationController
     @review = Review.where(user_id:current_user.id, movie_id:params[:id]).last
     movie_from_api = Tmdb::Movie.detail params[:moviedb_id]
     
-    if @movie.update_attributes(name: movie_from_api.title, moviedb_id: movie_from_api.id)
-      redirect_to review_path(@review), notice: 'Movie was successfully renamed.'
+    #Only allow api id assignment if it doesn't have one already
+    if @movie.moviedb_id == nil 
+      @movie.update_attributes(name: movie_from_api.title, moviedb_id: movie_from_api.id)
+      if @review != nil
+        #If @review is != nil in, it likely means theyre coming from a review they made
+        redirect_to review_path(@review), notice: 'Movie was successfully renamed.'
+      else 
+        #IF @review is nil, it means they're coming from elsewhere, probably a correction link
+        redirect_to movie_path(@movie), notice: 'Movie was successfully renamed.' 
+      end
     else 
-      redirect_to review_path(@review), notice: 'Movie already has ID.' 
+      redirect_to movie_path(@movie), notice: 'Movie already has ID.' 
     end
-#     @movies = Movie.find(params[:id])
-#     if @movies.moviedb_id == nil
-#       @movies.moviedb_id = params[:moviedb_id]
-#       @movies.name = params[:name]
-#       @movies.save
-#       @review = Review.where(user_id:current_user.id, movie_id:params[:id]).last
-#       redirect_to review_path(@review), notice: 'Movie was successfully renamed.' 
-#     else 
-#        @review = Review.where(user_id:current_user.id, movie_id:params[:id]).last
-#       redirect_to review_path(@review), notice: 'Movie already has ID.' 
-#     end
   end
   
   def profile
-    @movies = Movie.find(params[:id])
+    @movie = Movie.find(params[:id])
   end
   
 end

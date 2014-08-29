@@ -1,9 +1,13 @@
 <h1>Movies#profile</h1>
 <p>Will display movie profile goods - reviews for that movie, etc. etc..</p>
 
-<h2>All reviews for <%= @movies.name   %></h2>
+<h2>All reviews for <%= @movie.name   %></h2>
 
-<% Review.where(movie: @movies.name).order(:score).limit(20).each do |r|%>
+<% if @movie.moviedb_id == nil %>
+<br> We can't get much information about this movie. . Can you <%= link_to 'help identify it?', confirm_movie_path(@movie) %></a>
+<% end %>
+
+<% Review.where(movie: @movie.name).order(:score).limit(20).each do |r|%>
   
 <table>
   <tr>

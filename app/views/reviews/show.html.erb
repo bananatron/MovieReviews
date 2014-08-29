@@ -2,6 +2,9 @@
   <strong>Movie:</strong>
   <%= link_to @review.movie.name, @review.movie %>
 </p>
+<% if @movie.moviedb_id == nil %>
+<br> We can't get much information about this movie. Can you <%= link_to 'help identify it?', confirm_movie_path(@movie) %></a>
+<% end %>
 
 <p>
   <strong>Rating:</strong>
@@ -36,7 +39,7 @@ Login to vote!<br>
 
 
 <% if @review.updated_at != @review.created_at %>
-<p>Edited on: <%= @review.updated_at.to_s(:rfc822) %> PST</p>
+<!--<p>Edited on: <%= @review.updated_at.to_s(:rfc822) %> PST</p>-->
 <% end %>
 
 
