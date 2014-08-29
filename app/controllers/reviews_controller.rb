@@ -40,8 +40,8 @@ class ReviewsController < ApplicationController
   # GET /reviews/new
   def new
     @review = Review.new
-    #Passed in for title auto-complete in form #change to conditional set?
-    @movie_names = []
+    #Passed in for title auto-complete on form
+    @movie_names ||= []
     Movie.all.each { |movie| @movie_names << movie.name }
   end
 

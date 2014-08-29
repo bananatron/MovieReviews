@@ -5,6 +5,7 @@ gem 'devise'
 gem 'rails', '4.1.4'
 gem 'hashugar'
 gem 'themoviedb'
+gem 'foundation-rails'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use SCSS for stylesheets

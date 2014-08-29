@@ -1,15 +1,17 @@
 ISSUES:
 
  - Autocomplete too long
+ - what to do if no results on name correction?
 
 IMPL:
-- let users correct bad titles
+
 - lock down confirmations - working on it
 - add flags to fields so users can flag a review/movie/etc. for review
 - Guest users w/ auto usernames
 
-
- - Weird movie titles can cause issues on URL (SOLVED)
+- Delete useless movie entries if no reviews exist - DONE
+- let users correct bad titles - DONE
+- Weird movie titles can cause issues on URL (SOLVED)
 - Movie autocomplete - DONE
 - Movie_id not saving on reviews for movies that aren't in db already (SOLVED)
 - Movie search DONE
