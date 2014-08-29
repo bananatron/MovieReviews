@@ -1,15 +1,14 @@
 ISSUES:
  - Weird movie titles can cause issues on URL
+ - Autocomplete too long
 
 IMPL:
-- Movie autocomplete
 - lock down confirmations
 - add flags to fields so users can flag a review/movie/etc. for review
 - Guest users w/ auto usernames
 
-
-
- - Movie_id not saving on reviews for movies that aren't in db already (SOLVED)
+- Movie autocomplete - DONE
+- Movie_id not saving on reviews for movies that aren't in db already (SOLVED)
 - Movie search DONE
 - Character counter limit on review/summary - DONE
 - Voting - DONE
@@ -19,12 +18,13 @@ IMPL:
 
 
 Then:
-- API calls
+- API calls finish / caching
 - Style
+
 
 Test
 - Password recovery
-- Validations - length etc
+- Validations - urls, length, etc.
 
 
 == README

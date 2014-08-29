@@ -18,7 +18,7 @@ class ReviewsController < ApplicationController
     @review = Review.find(params[:id])
     @review.votes.create(up:true, user_id:current_user.id)
     calculate_score
-    redirect_to :back
+    redirect_to @review
   end
   
   def delete_vote
@@ -48,7 +48,7 @@ class ReviewsController < ApplicationController
   def edit
     @review = Review.find(params[:id])
     if current_user.id != @review.user_id
-      redirect_to :back, notice: "You don't have authorization"
+      redirect_to @review, notice: "You don't have authorization"
     end
   end
 

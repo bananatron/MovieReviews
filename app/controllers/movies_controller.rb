@@ -25,10 +25,7 @@ class MoviesController < ApplicationController
    return core
   end
 
-  
-  
   def find_movie_tmdb(query)
-    Tmdb::Api.key("a2038ba65a6e1cffb5e59cee83bd1bcd")
     q = Tmdb::Movie.search(query)
     return q
   end
@@ -38,22 +35,31 @@ class MoviesController < ApplicationController
   end
   
   def confirm
-    @movies = Movie.find(params[:id])
-    @results = find_movie_tmdb(create_core(@movies.name))
+    @movie = Movie.find(params[:id])
+    @results = find_movie_tmdb(create_core(@movie.name))
   end
   
   def confirm_dbid
-    @movies = Movie.find(params[:id])
-    if @movies.moviedb_id == nil
-      @movies.moviedb_id = params[:moviedb_id]
-      @movies.name = params[:name]
-      @movies.save
-      @review = Review.where(user_id:current_user.id, movie_id:params[:id]).last
-      redirect_to review_path(@review), notice: 'Movie was successfully renamed.' 
+    @movie = Movie.find(params[:id])
+    @review = Review.where(user_id:current_user.id, movie_id:params[:id]).last
+    movie_from_api = Tmdb::Movie.detail params[:moviedb_id]
+    
+    if @movie.update_attributes(name: movie_from_api.title, moviedb_id: movie_from_api.id)
+      redirect_to review_path(@review), notice: 'Movie was successfully renamed.'
     else 
-       @review = Review.where(user_id:current_user.id, movie_id:params[:id]).last
       redirect_to review_path(@review), notice: 'Movie already has ID.' 
     end
+#     @movies = Movie.find(params[:id])
+#     if @movies.moviedb_id == nil
+#       @movies.moviedb_id = params[:moviedb_id]
+#       @movies.name = params[:name]
+#       @movies.save
+#       @review = Review.where(user_id:current_user.id, movie_id:params[:id]).last
+#       redirect_to review_path(@review), notice: 'Movie was successfully renamed.' 
+#     else 
+#        @review = Review.where(user_id:current_user.id, movie_id:params[:id]).last
+#       redirect_to review_path(@review), notice: 'Movie already has ID.' 
+#     end
   end
   
   def profile
