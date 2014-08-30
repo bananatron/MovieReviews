@@ -3,8 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="stylesheet" href="css/app.css">
+      <script src="js/vendor/modernizr.js"></script>
 
-    <title><%= content_for?(:title) ? yield(:title) : "foundation-rails" %></title>
+    <title>TLDR Movie Reviews</title>
 
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "vendor/modernizr" %>
@@ -14,23 +16,27 @@
   <body>
 
   <div class="row">
-    <div class="large-7 columns">
-      <div class="panel">
-        <h1><a href="/">TLDR Movie Reviews</a></h1>
-        <br>    
-        <p id="notice"><%= notice %></p>
-        <p class="alert"><%= alert %></p>
-      </div>
+    <div class="large-8 columns">
+
+        <h1><a href="/">#</a></h1>
+        <br> 
+        <% if notice || alert %>
+        <div data-alert class="alert-box secondary">
+         <p id="notice"><%= notice %></p>
+         <p class="alert"><%= alert %></p>
+          <a href="" class="close">&times;</a>
+        </div>
+        <% end %>
     </div>
  
     
-    <div class="large-5 columns">
+    <div class="large-4 columns">
+      
+      <div class="row"  align="right">
       <%# user is logged in, show log out link %>
   <% if current_user.present? %>
-  <%= "You are  logged in as #{current_user.username}." %>
-  
-  <a href="/users/<%= current_user.id %>">Profile</a>
-
+  You are  logged in as <a href="/users/<%= current_user.id %>">
+      <%=current_user.username%></a>.
   
 
   
@@ -39,16 +45,22 @@
     <%= link_to 'Sign In', new_user_session_path %> |
     <%= link_to 'Register Now!', new_user_registration_path %>
   <% end %>
-        
+      </div>
+      <!-- end sign in div -->
+         <div class="row" align="right">
   <br>
-    <h4><%= link_to 'New Review', new_review_path %></h4>
-      
+           <%= button_to 'New Summary', new_review_path, method: :get, class: "button radius" %>
+     </div>
+        <!-- end new review div -->   
+           
     </div>
     </div>
-  
+   <div class="row">
+    <div class="large-12 columns">
      <%= yield %>
     <%= javascript_include_tag "application" %>
- 
+     </div>
+    </div>
    
  
   <footer class="row">

@@ -3,18 +3,34 @@
 <div class="row">
     <div class="large-10 columns">
  
-       
       <div class="row">
-        <div class="large-2 columns small-3"><img src="http://placehold.it/80x80&text=[img]"/></div>
+        <div class="large-2 columns small-3"><img class="th" src="http://placehold.it/80x80&text=[m]"/></div>
         <div class="large-10 columns">
           <p><strong><%= review.movie.name %>:</strong>
             <%= review.summary %></p>
 
+          
+          
+
+        
+
           <ul class="inline-list">
-            <li><%= link_to 'Edit', edit_review_path(review) %></li>
-            <li><%= link_to 'Show', review %></li>
+            <li>
+          <% if current_user != nil %>
+              <%  if Vote.where(review_id:review, user_id:current_user.id).count < 1 %>
+              <%= button_to '+1', upvote_review_path(review), method: :post, :class => "button tiny radius round" %>
+              <% else %>
+                <%= button_to '-1', delete_vote_review_path(review), method: :post, :class => "button tiny radius round alert" %>
+              <% end %>
+            <% end %></li>
+            <li><%= link_to 'Edit', edit_review_path(review) %></li><li> <%= link_to 'Show', review %></li>
+     
           </ul>
 
+
+
+
+          
         </div>
                 
       </div>
@@ -26,7 +42,8 @@
 
   
     <aside class="large-2 columns hide-for-small">
-      <p><%= review.score %></p>
+      <img src="http://placehold.it/100x100&text=[<%= review.score %>]"/>
+      <!--<p><%= review.score %></p>-->
     </aside>
  
   </div>

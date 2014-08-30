@@ -1,19 +1,26 @@
+
 <h2> <%= @user.username %>'s Profile </h2>
 
-<!-- @user_reviews = current_user.reviews -->
 
-<% if current_user.id == @user_id %>
+<% if current_user && current_user.id == @user_id %>
 <a href="/users/edit">Edit Your Profile</a>
 <% end %>
-<strong><p>Most recent reviews by <%= @user.username %>:</p></strong>
 
-<% @user_reviews.each do |review| %>
-<table>
-  <tr>
-    <td><%= review.summary %>
-    </td>
-  </tr>
-</table>
+<p><strong><p>Reviews by <%= @user.username %>:</p></strong>
+
+  <% @user_reviews.each do |review| %>
+
+<div class="row">
+  <div class="large-9 columns">
+    <div class="panel">
+      <strong><%= review.movie.name %></strong>: <%= review.summary %>
+    </div>
+    <hr/> 
+  </div>
+
+  <div class="large-3 columns">
+    <img src="http://placehold.it/100x100&text=[<%= review.score %>]"/>
+  </div>
+</div>
+
 <% end %>
-
-<p>Users#profile</p>

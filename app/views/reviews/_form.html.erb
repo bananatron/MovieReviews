@@ -51,11 +51,22 @@ $('#title .typeahead').typeahead({
   </div>
 
 
+<%= f.range_field :rating, :min=>0, :max=>200, :class=>"range-slider", :id=>"rating"%>
 
-  <div class="field">
-    <%= f.label :rating %><br>
-    <%= f.text_field :rating %>
+
+<div class="row">
+  <div class="small-10 medium-11 columns">
+    <div class="range-slider" data-slider data-options="display_selector: #sliderOutput3;">
+      <span class="range-slider-handle" role="slider" tabindex="0"></span>
+      <span class="range-slider-active-segment"></span>
+      <input type="hidden" id='rating' name='rating'>
+    </div>
   </div>
+  <div class="small-2 medium-1 columns">
+    <span id="sliderOutput3"></span>
+  </div>
+</div>
+
   <div class="field">
     <%= f.label :summary %><br>
     <%= f.text_area :summary %>

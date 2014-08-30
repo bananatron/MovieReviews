@@ -18,7 +18,8 @@ class ReviewsController < ApplicationController
     @review = Review.find(params[:id])
     @review.votes.create(up:true, user_id:current_user.id)
     calculate_score
-    redirect_to @review
+    #redirect_to @review
+    redirect_to :back
   end
   
   def delete_vote

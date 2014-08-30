@@ -2,12 +2,13 @@ ISSUES:
 
  - Autocomplete too long
  - what to do if no results on name correction?
+http://www.colorhexa.com/6b4e85
 
 IMPL:
 
 - lock down confirmations - working on it
 - add flags to fields so users can flag a review/movie/etc. for review
-- Guest users w/ auto usernames
+- Guest users w/ auto usernames (look into modals for warning about sessions)
 
 - Delete useless movie entries if no reviews exist - DONE
 - let users correct bad titles - DONE

@@ -3,7 +3,7 @@ class Review < ActiveRecord::Base
   belongs_to :movie
   has_many :votes
   
-  validates_presence_of :summary, :user_id
+  validates_presence_of :summary, :user_id, :rating
   validates_uniqueness_of :summary
   validates_length_of :summary, maximum: 140
   
