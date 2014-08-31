@@ -1,23 +1,26 @@
 ISSUES:
-
- - Autocomplete too long
- - what to do if no results on name correction?
 http://www.colorhexa.com/6b4e85
-- save all movie names downcase
+
+
+- Movie autocomplete - BROKEN
+- Character counter limit on review/summary - BROKEN
 
 IMPL:
-
+- badges
 - lock down confirmations - working on it
 - add flags to fields so users can flag a review/movie/etc. for review
 - Guest users w/ auto usernames (look into modals for warning about sessions)
 
+
+- save all movie names downcase / STRIKE - compare downcases so that we cna pull straight from movie db - DONE
+- what to do if no results on name correction? Generate flag notice - DONE
 - Delete useless movie entries if no reviews exist - DONE
 - let users correct bad titles - DONE
 - Weird movie titles can cause issues on URL (SOLVED)
-- Movie autocomplete - DONE
+
 - Movie_id not saving on reviews for movies that aren't in db already (SOLVED)
 - Movie search DONE
-- Character counter limit on review/summary - DONE
+
 - Voting - DONE
 - Ratings / Score - DONE
 - Username login / change - DONE

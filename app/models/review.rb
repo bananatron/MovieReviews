@@ -10,10 +10,13 @@ class Review < ActiveRecord::Base
   def movie_title
     movie.name.downcase if movie
   end
-  
+
+  #Does case insenstive search for movies matching same title and assigns them to review
   #Need to fix this where movie is being created even if save isn't complete on review
   def movie_title=(title)
-    if movie = Movie.where(name: title.downcase).first
+     mt = Movie.arel_table
+    m = Movie.where(mt[:name].matches(title)).first
+    if movie = m
       self[:movie_id] = movie.id
     else 
       m = Movie.create(name: title)
