@@ -1,18 +1,33 @@
-<h1><%= @movie.name   %></h1>
-
-
-  <% if @movie.moviedb_id == nil %>
-  <div class="panel callout radius">
-    We can't get much information about this movie, and it's really bumming everyone out. Can you <%= link_to 'help identify it?', confirm_movie_path(@movie) %></a>
+<div class="row">
+  <div class="large-2 columns">
+    <% if @movie.image %>
+     <img src="http://image.tmdb.org/t/p/w300<%= @movie.image %>" class="th" />
+    <% else %>
+     <img src="http://placehold.it/150x100&text=!"/>
+    <% end %>
   </div>
-  <% end %>
+  
+  <div class="large-10 columns">
+    <h1><%= @movie.name %> <% if @movie.year %><small><i> (<%= @movie.year %>)</i></small><% end %> </h1>
+  </div>
+</div>
+<!-- end first row -->
 
+<% if @movie.moviedb_id == nil %>
+<div class="panel callout radius">
+  We can't get much information about this movie, and it's really bumming everyone out. 
+  Can you <%= link_to 'help identify it?', confirm_movie_path(@movie) %></a>
+</div>
+<% end %>
+<br><br>
 <h4>Some popular summaries for <%= @movie.name   %>:</h4>
 
-<% Review.where(movie_id: @movie.id).order(:score).limit(20).each do |r|%>
 
 <div class="row">
-  <div class="large-9 columns">
+  
+  
+  <% Review.where(movie_id: @movie.id).order(:score).limit(20).each do |r|%>
+    <div class="large-9 columns">
     <div class="panel">
       <p><%= r.summary %>
         <% r_user = User.where(id:r.user_id).last %>
@@ -27,5 +42,7 @@
 </div>
 
 <% end %>
+
+What do you have to say? <a href="/reviews/new?">Write a summary of your own</a>.
 
 

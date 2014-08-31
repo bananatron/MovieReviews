@@ -1,43 +1,47 @@
-<p>
-  <strong>Movie:</strong>
-  <%= link_to @review.movie.name, @review.movie %>
-</p>
-<% if @movie.moviedb_id == nil %>
-<br> We can't get much information about this movie. Can you <%= link_to 'help identify it?', confirm_movie_path(@movie) %></a>
-<% end %>
+<div class="row">
+  <div class="large-2 columns">
+    <center><%= link_to image_tag("http://image.tmdb.org/t/p/w130"+@review.movie.image), @review.movie, class:"th" if @review.movie.image %><br>
+    <strong><%= link_to @review.movie.name, @movie %></strong>
+    </center>
+  </div>
+  <div class="large-10 columns">
+    <div class="row">
+      <div class="large-10 columns">
+        <% if @movie.moviedb_id == nil %>
+        <div class="panel callout radius">
+           We can't get much information about this movie. Can you <%= link_to 'help identify it?', confirm_movie_path(@movie) %></a>
+        </div>
+        <% end %>
 
+        <div class="panel">
+          <%= @review.summary %>
+        </div>
 
-<p>
-  <strong>Score:</strong>
-  <%= @review.score %><br>
-</p>
-
-<p>
-  <strong>Summary:</strong>
-  <%= @review.summary %>
-</p>
-
-<p>
-  <strong>Posted by  <%= link_to @review.user.username, @review.user %></strong>
-</p>
-
-<!-- Show appropriate voting button -->
-<% if current_user != nil %>
-  <%  if Vote.where(review_id:@review, user_id:current_user.id).count < 1 %>
-    <%= button_to '+1', upvote_review_path(@review), method: :post, :class => "button small radius round" %>
-  <% else %>
-    <%= button_to '-1', delete_vote_review_path(@review), method: :post, :class => "button small radius round" %>
-  <% end %>
-<% else %>
-  Login to vote!<br>
-<% end %>
-
-
-<% if @review.updated_at != @review.created_at %>
-<!--<p>Edited on: <%= @review.updated_at.to_s(:rfc822) %> PST</p>-->
-<% end %>
-
-
-
-<%= link_to 'Edit', edit_review_path(@review) %> |
-<%= link_to 'Back', reviews_path %>
+        <!-- author/edit breakaway -->
+        <div class="row">
+          <div class="large-7 columns">
+            <%= link_to 'Edit', edit_review_path(@review) %> | <%= link_to 'Delete', review_path(@review), :method => :delete %> 
+          </div>
+          <div align="right" class="large-5 columns">
+            Posted by <strong><%= link_to @review.user.username, @review.user %></strong>
+          </div>
+        </div>
+        <!-- end breakaway -->
+      </div>
+    
+      <div align="center" class="large-2 columns">
+        <img src="http://placehold.it/80x80&text=<%= @review.score %>"/><br><br>
+        <!-- Show appropriate voting button -->
+        <% if current_user != nil %>
+          <%  if Vote.where(review_id:@review, user_id:current_user.id).count < 1 %>
+            <%= button_to '+1', upvote_review_path(@review), method: :post, :class => "button small radius round" %>
+          <% else %>
+            <%= button_to '-1', delete_vote_review_path(@review), method: :post, :class => "button small radius round alert" %>
+          <% end %>
+        <% else %>
+          Login to vote!<br>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

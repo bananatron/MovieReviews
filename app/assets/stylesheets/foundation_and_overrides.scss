@@ -257,8 +257,8 @@ $info-color: #4e6885;
 // We use these to style anchors
 // $anchor-text-decoration: none;
 // $anchor-text-decoration-hover: none;
-// $anchor-font-color: $primary-color;
-// $anchor-font-color-hover: scale-color($primary-color, $lightness: -14%);
+//$anchor-font-color: #FFFFFF;
+//$anchor-font-color-hover: scale-color(#FFFFFF, $lightness: -14%);
 
 // We use these to style the <hr> element
 // $hr-border-width: 1px;
@@ -346,8 +346,7 @@ $info-color: #4e6885;
 // $alert-font-weight: $font-weight-normal;
 // $alert-font-size: rem-calc(13);
 // $alert-font-color: $white;
-$alert-font-color-alt: #FFFFFF;
-
+$alert-font-color-alt: #AAAAAA;
 
 // We use this for close hover effect.
 // $alert-function-factor: -14%;

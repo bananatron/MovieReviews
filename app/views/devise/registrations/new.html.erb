@@ -4,16 +4,36 @@
   <%= devise_error_messages! %>
 <p><%= f.label :username %><br />
     <%= f.text_field :username %></p>
-  <div><%= f.label :email %><br />
+  <div><%= f.label :email %>
+    
+    <a href="#" data-reveal-id="myModal"><small><i>(Why do you need my email?)</i></small></a>
+
+  <div id="myModal" class="reveal-modal" data-reveal>
+    <div class="row">
+      <div class="large-9 columns">
+        
+    <h2>You've Got Mail!</h2>
+    <br><p>Your email is used to retrieve your account information, should you misplace it. <br>
+      We promise not to sell it or do anything equally shady with it - <i>scout's honor</i>.</p>
+      </div>
+      <div class="large-3 columns">
+    <img src="http://i.imgur.com/lHcZxAk.png">
+      </div>
+    </div>
+    <a class="close-reveal-modal">&#215;</a>
+  </div>
+    
+    
+    <br />
   <%= f.email_field :email, autofocus: true %></div>
 
-  <div><%= f.label :password %> <% if @validatable %><i>(<%= @minimum_password_length %> characters minimum)</i><% end %><br />
+  <div><%= f.label :password %> <% if @validatable %><i><small>(<%= @minimum_password_length %> characters minimum)</i></small><% end %><br />
     <%= f.password_field :password, autocomplete: "off" %></div>
 
   <div><%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off" %></div>
 
-  <div><%= f.submit "Sign up" %></div>
+  <div><%= f.submit "Sign up", :class => "button radius" %></div>
 <% end %>
 
-<%= render "devise/shared/links" %>
+<%= link_to 'Already have an account? Log in instead!', new_user_session_path %>

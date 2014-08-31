@@ -90,11 +90,10 @@ class ReviewsController < ApplicationController
   # DELETE /reviews/1
   # DELETE /reviews/1.json
   def destroy
-    @review.destroy
-    
     if current_user.id != @review.user_id
       redirect_to @review, notice: "You aren't authorized to do that, man."
     else 
+      @review.destroy
       redirect_to action: "index", notice: "Summary removed."
     end 
     #If no other reviews for movie & it's a useless entry (without api id), destroy it

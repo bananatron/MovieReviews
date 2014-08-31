@@ -2,15 +2,16 @@ ISSUES:
 http://www.colorhexa.com/6b4e85
 
 - Movie autocomplete - BROKEN
-- Character counter limit on review/summary - BROKEN
+- Character counter broken on new but works on edit
 
 IMPL:
-- badges
+- badges (think about interactions between badges and guest users)
 - add flags to fields so users can flag a review/movie/etc. for review
 - Guest users w/ auto usernames (look into modals for warning about sessions)
 - remove delete from index and put on profile page
 - Spoiler notice (dog tooltip?)
-- sorting on homepage/elsewhere
+- sorting on homepage/elsewhere (user page, etc.)
+- user avatar implementation?
 
 - lock down confirmations - DONE
 - save all movie names downcase / STRIKE - compare downcases so that we cna pull straight from movie db - DONE

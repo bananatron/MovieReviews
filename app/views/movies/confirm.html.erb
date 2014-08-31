@@ -1,4 +1,4 @@
-<div class="panel callout radius"><i>Current movie name: <%= @movie.name %></i></div><br>
+<div class="panel callout radius"><i>Current movie name: <strong><%= @movie.name %></strong></i></div><br>
 
 <h3>We found some movies this summary might belong to:</h3><br><br>
 <% params %>
@@ -9,7 +9,10 @@
     <% if r.popularity > 0.3 %>
     <div class="large-9 columns">
       <div class="panel">
-        <h4><%= link_to r.title, confirm_dbid_movie_path(moviedb_id: r.id) %> <i>(<%= r.release_date[0...4] %>)</i></h4> <!--<%= r.id%>-->
+        <h4><%= link_to "+ " + r.title, confirm_dbid_movie_path(moviedb_id: r.id) %> <i>(<%= r.release_date[0...4] %>)</i></h4> <!--<%= r.id%>-->
+        
+        <% movie_details ||= Tmdb::Movie.detail(r.id) %>
+        <p><%= movie_details.overview %>
       </div>
     </div>  
 
@@ -23,11 +26,10 @@
     <% end %>
   <% end %>
 <% else %>
-  <p>Just kidding, we couldn't find any. Flag this below for review.</p>
+  </div>
+<p>Just kidding, we couldn't find any. Flag this below for review.</p>
+
 <% end %>
-  
-  
-</div>
 
 
 
