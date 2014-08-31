@@ -13,7 +13,7 @@
 <div class="row">
   <div class="large-9 columns">
     <div class="panel">
-      <strong><%= review.movie.name %></strong>: <%= review.summary %>
+      <strong><%= link_to review.movie.name, review.movie %></strong>: <p><%= review.summary %>
     </div>
     <hr/> 
   </div>

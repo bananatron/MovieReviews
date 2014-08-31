@@ -40,7 +40,7 @@ class MoviesController < ApplicationController
     if @movie.moviedb_id != nil
       redirect_to movie_path(@movie), notice: 'Movie already has ID.'
     end
-    @results = find_movie_tmdb(create_core(@movie.name))
+    @results ||= find_movie_tmdb(create_core(@movie.name))
   end
   
   def confirm_dbid
@@ -50,7 +50,7 @@ class MoviesController < ApplicationController
     
     #Only allow api id assignment if it doesn't have one already
     if @movie.moviedb_id == nil 
-      @movie.update_attributes(name: movie_from_api.title, moviedb_id: movie_from_api.id)
+      @movie.update_attributes(name: movie_from_api.title, moviedb_id: movie_from_api.id, image: movie_from_api.poster_path, year: movie_from_api.release_date)
       if @review != nil
         #If @review is != nil in, it likely means theyre coming from a review they made
         redirect_to review_path(@review), notice: 'Movie was successfully renamed.'

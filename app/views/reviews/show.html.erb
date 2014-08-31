@@ -6,10 +6,6 @@
 <br> We can't get much information about this movie. Can you <%= link_to 'help identify it?', confirm_movie_path(@movie) %></a>
 <% end %>
 
-<p>
-  <strong>Rating:</strong>
-  <%= @review.rating %>
-</p>
 
 <p>
   <strong>Score:</strong>
@@ -28,12 +24,12 @@
 <!-- Show appropriate voting button -->
 <% if current_user != nil %>
   <%  if Vote.where(review_id:@review, user_id:current_user.id).count < 1 %>
-  <%= button_to '+1', upvote_review_path(@review), method: :post %>
+    <%= button_to '+1', upvote_review_path(@review), method: :post, :class => "button small radius round" %>
   <% else %>
-  <%= button_to '-1', delete_vote_review_path(@review), method: :post %>
+    <%= button_to '-1', delete_vote_review_path(@review), method: :post, :class => "button small radius round" %>
   <% end %>
 <% else %>
-Login to vote!<br>
+  Login to vote!<br>
 <% end %>
 
 

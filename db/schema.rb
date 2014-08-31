@@ -11,21 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140826225443) do
+ActiveRecord::Schema.define(version: 20140830182829) do
 
   create_table "movies", force: true do |t|
     t.string  "name"
     t.integer "moviedb_id"
+    t.integer "flag"
+    t.integer "year"
+    t.string  "image"
   end
 
   create_table "reviews", force: true do |t|
-    t.integer  "rating"
     t.integer  "score"
     t.string   "summary"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
     t.integer  "movie_id"
+    t.integer  "flag"
   end
 
   create_table "users", force: true do |t|
@@ -44,6 +47,7 @@ ActiveRecord::Schema.define(version: 20140826225443) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "username"
+    t.integer  "flag"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

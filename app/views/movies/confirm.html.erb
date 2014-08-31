@@ -1,19 +1,34 @@
-<h1>Movies#confirm</h1>
-<h2>Some other titles this summary might belong to instead:</h2>
+<div class="panel callout radius"><i>Current movie name: <%= @movie.name %></i></div><br>
 
-<h2> Current movie name: <%= @movie.name %> </h2>
-<%= params %>
+<h3>We found some movies this summary might belong to:</h3><br><br>
+<% params %>
+
+<div class="row">
 <% if @results.count > 0 %>
   <% @results.each do |r|%>
-  <table>
-    <tr>
-      <td>
-        <%= link_to r.title, confirm_dbid_movie_path(moviedb_id: r.id) %> <i>(<%= r.release_date[0...4]%>)</i>
-        <%# link_to r.title, @movie.id.to_s+"/"+(r.id.to_s)+"/"+r.title.to_s %> <i>(<%= r.release_date[0...4]%>)</i> - <%= r.id%>
-      </td>
-    </tr>
-  </table>
+    <% if r.popularity > 0.3 %>
+    <div class="large-9 columns">
+      <div class="panel">
+        <h4><%= link_to r.title, confirm_dbid_movie_path(moviedb_id: r.id) %> <i>(<%= r.release_date[0...4] %>)</i></h4> <!--<%= r.id%>-->
+      </div>
+    </div>  
+
+    <div class="large-3 columns">
+      <% if r.poster_path %>
+      <img src="http://image.tmdb.org/t/p/w130<%= r.poster_path%>"></br></br></br>
+      <% else %>
+      <img src="http://placehold.it/80x80&text=!">
+      <% end %>    
+    </div> 
+    <% end %>
   <% end %>
 <% else %>
-  <p>No results</p>
+  <p>Just kidding, we couldn't find any. Flag this below for review.</p>
 <% end %>
+  
+  
+</div>
+
+
+
+<p> Is the right movie not on the list? <br>Flag this movie for review by a moderator.</p>

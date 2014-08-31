@@ -4,15 +4,11 @@
     <div class="large-10 columns">
  
       <div class="row">
-        <div class="large-2 columns small-3"><img class="th" src="http://placehold.it/80x80&text=[m]"/></div>
+        <div class="large-2 columns small-3"><img src="http://placehold.it/80x80&text=<%= review.score %>"/></div>
         <div class="large-10 columns">
-          <p><strong><%= review.movie.name %>:</strong>
-            <%= review.summary %></p>
-
-          
-          
-
-        
+          <p> <%= review.summary %></p>
+          <% review_user = User.where(id:review.user_id).last %>
+                    <p align="right"><small>by  </small> <strong><%= link_to review_user.username, review_user %></strong>
 
           <ul class="inline-list">
             <li>
@@ -23,16 +19,9 @@
                 <%= button_to '-1', delete_vote_review_path(review), method: :post, :class => "button tiny radius round alert" %>
               <% end %>
             <% end %></li>
-            <li><%= link_to 'Edit', edit_review_path(review) %></li><li> <%= link_to 'Show', review %></li>
-     
+            <li><%= link_to 'Edit', edit_review_path(review) %></li><li> <%= link_to 'Show', review %></li><li><%= link_to 'Delete', review_path(review), :method => :delete %></li>
           </ul>
-
-
-
-
-          
-        </div>
-                
+        </div> 
       </div>
 
       <hr/>      
@@ -42,7 +31,16 @@
 
   
     <aside class="large-2 columns hide-for-small">
-      <img src="http://placehold.it/100x100&text=[<%= review.score %>]"/>
+      <!--<img src="http://placehold.it/100x100&text=[<%= review.score %>]"/>-->
+      
+      <% poster_path = review.movie.image %>
+      <% if poster_path != nil %>
+      <center><%= link_to image_tag("http://image.tmdb.org/t/p/w130"+poster_path), review, class:"th" %> </br>
+        <strong><%= link_to review.movie.name, review.movie %></strong></center>
+      <% else %>
+        <center><%= link_to image_tag("http://placehold.it/80x80&text=!"), review, class:"th" %>  </br>
+        <strong><%= link_to review.movie.name, review.movie %></strong></center>
+      <% end %>
       <!--<p><%= review.score %></p>-->
     </aside>
  

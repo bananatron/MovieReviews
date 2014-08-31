@@ -1,19 +1,30 @@
-<h1>Movies#profile</h1>
-<p>Will display movie profile goods - reviews for that movie, etc. etc..</p>
+<h1><%= @movie.name   %></h1>
 
-<h2>All reviews for <%= @movie.name   %></h2>
 
-<% if @movie.moviedb_id == nil %>
-<br> We can't get much information about this movie. . Can you <%= link_to 'help identify it?', confirm_movie_path(@movie) %></a>
-<% end %>
+  <% if @movie.moviedb_id == nil %>
+  <div class="panel callout radius">
+    We can't get much information about this movie, and it's really bumming everyone out. Can you <%= link_to 'help identify it?', confirm_movie_path(@movie) %></a>
+  </div>
+  <% end %>
 
-<% Review.where(movie: @movie.name).order(:score).limit(20).each do |r|%>
-  
-<table>
-  <tr>
-    <td><%= r.summary %></td>
-  </tr>
-</table>
+<h4>Some popular summaries for <%= @movie.name   %>:</h4>
+
+<% Review.where(movie_id: @movie.id).order(:score).limit(20).each do |r|%>
+
+<div class="row">
+  <div class="large-9 columns">
+    <div class="panel">
+      <p><%= r.summary %>
+        <% r_user = User.where(id:r.user_id).last %>
+      <p align="right">by <strong><%= link_to r_user.username, r_user %></strong> 
+    </div>
+    <hr/> 
+  </div>
+
+  <div class="large-3 columns">
+    <img src="http://placehold.it/100x100&text=[<%= r.score %>]"/>
+  </div>
+</div>
 
 <% end %>
 

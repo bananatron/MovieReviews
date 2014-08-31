@@ -3,6 +3,7 @@ ISSUES:
  - Autocomplete too long
  - what to do if no results on name correction?
 http://www.colorhexa.com/6b4e85
+- save all movie names downcase
 
 IMPL:
 
