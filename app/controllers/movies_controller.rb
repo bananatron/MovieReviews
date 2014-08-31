@@ -43,18 +43,6 @@ class MoviesController < ApplicationController
     @results ||= find_movie_tmdb(create_core(@movie.name))
   end
   
-  def create
-    @movie = Movie.new(review_params)
-    @movie_name = @movie.name.downcase
-    mt = Movie.arel_table
-    m = Movie.where(mt[:name].matches(@movie_name)).last
-    if m != nil
-      r = Review.where(movie_id:@movie.id).first
-      r.movie_id = m.id
-      r.save
-    end
-  end
-  
   def confirm_dbid
     @movie = Movie.find(params[:id])
     @review = Review.where(user_id:current_user.id, movie_id:params[:id]).last
