@@ -1,0 +1,24 @@
+
+
+<div class="panel">
+  <p> <%= review.summary %></p>
+  </br>
+  <% review_user = User.where(id:review.user_id).last %>
+</div>
+
+<!-- Break away under panel w/ edit and author -->
+<div class="row">
+  <div class="large-7 columns">
+    <% if current_user && current_user.id == review.user_id %>
+    <%= link_to 'Edit', edit_review_path(review) %> | <%= link_to 'Delete', review_path(review), :method => 'delete' %>
+    <% end %>
+
+    <!--<li><%= link_to 'Delete', review_path(review), :method => :delete %></li>-->
+  </div>
+
+  <div align="right" class="large-5 columns">
+
+    Posted by <strong><%= link_to review_user.username, review_user %></strong><br>
+    <span class="success label"><%= link_to review.created_at.to_formatted_s(:rfc822)[0..-16], review %></span>
+  </div>
+</div>

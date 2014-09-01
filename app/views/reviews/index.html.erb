@@ -5,34 +5,16 @@
  
     <div class="row">
         <div align="center" class="large-2 columns small-3">
-          <img src="http://placehold.it/80x80&text=<%= review.score %>"/><br><br>
-            <% if current_user != nil %>
-              <%  if Vote.where(review_id:review, user_id:current_user.id).count < 1 %>
-              <%= button_to '+1', upvote_review_path(review), method: :post, :class => "button tiny radius round" %>
-              <% else %>
-                <%= button_to '-1', delete_vote_review_path(review), method: :post, :class => "button tiny radius round alert" %>
-              <% end %>
-            <% end %>
+          
+
+          <%= render 'score', :review => review %>
+
+          
         </div>
 
         <div class="large-10 columns">
-          <div class="panel">
-          <p> <%= review.summary %></p>
-            </br>
-          <% review_user = User.where(id:review.user_id).last %>
-          </div>
-            <!-- Break away under panel w/ edit and author -->
-            <div class="row">
-              <div class="large-7 columns">
-                <%= link_to 'Edit', edit_review_path(review) %> | 
-                <%= link_to 'Show', review %>
-                <!--<li><%= link_to 'Delete', review_path(review), :method => :delete %></li>-->
-              </div>
-              <div align="right" class="large-5 columns">
-                Posted by <strong><%= link_to review_user.username, review_user %></strong>
-              </div>
-            </div>
-            <!-- end author eidt info -->
+          
+          <%= render 'summary', :review => review %>
 
         </div> 
       </div>
@@ -45,11 +27,10 @@
       <% poster_path = review.movie.image %>
       <% if poster_path != nil %>
       <center><%= link_to image_tag("http://image.tmdb.org/t/p/w130"+poster_path), review, class:"th" %> </br>
-        <% if review.movie.name.length > 20 %><small> <% end %>
-        <strong><%= link_to review.movie.name, review.movie %></strong></center>
+        <% if review.movie.name.length > 20 %><small><% end %>
+    <strong><%= link_to review.movie.name[ 0 .. 40 ], review.movie %></strong></center></small>
       <% else %>
         <center><%= link_to image_tag("http://placehold.it/100x135&text=!"), review, class:"th" %>  </br>
-        
       <% if review.movie.name.length > 20 %><small> <% end %>
       <strong><%= link_to review.movie.name, review.movie %></strong></center></small>
       <% end %>
@@ -58,3 +39,4 @@
 </div>
 
  <% end %>
+<%= will_paginate @posts %>

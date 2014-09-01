@@ -8,4 +8,6 @@ class UsersController < ApplicationController
       @user_id = params[:id].to_i
       @user = User.find(params[:id])
   end
+  
+
 end

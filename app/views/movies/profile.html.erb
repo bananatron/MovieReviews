@@ -1,9 +1,10 @@
+<!-- Movie profile -->
 <div class="row">
   <div class="large-2 columns">
     <% if @movie.image %>
      <img src="http://image.tmdb.org/t/p/w300<%= @movie.image %>" class="th" />
     <% else %>
-     <img src="http://placehold.it/150x100&text=!"/>
+     <img src="http://placehold.it/180x100&text=No Image"/>
     <% end %>
   </div>
   
@@ -24,24 +25,33 @@
 
 
 <div class="row">
-  
-  
+
   <% Review.where(movie_id: @movie.id).order(:score).limit(20).each do |r|%>
-    <div class="large-9 columns">
-    <div class="panel">
-      <p><%= r.summary %>
-        <% r_user = User.where(id:r.user_id).last %>
-      <p align="right">by <strong><%= link_to r_user.username, r_user %></strong> 
+  
+   <div class="large-10 columns">
+    <%= render '/reviews/summary', :review => r %>
+     
+     <!-- Flag info -->
+    <p><a href="#" data-reveal-id="firstModal"><img src="http://png-2.findicons.com/files/icons/2564/max_mini_icon/16/flag_red.png"></a>
+    <!-- Reveal Modals begin -->
+    <div id="firstModal" class="reveal-modal" data-reveal>
+      <h2>Flag this movie?</h2>
+      <p>Movies which are flagged are reviewed by a moderator for invalid or inappropriate data.</p>
+      <p>Are you sure you want to flag <%= @movie.name %>?</p>
+      <p><%= button_to "Yes I'm sure", flag_movie_path, class:"secondary radius button", method:"get" %>
+      <a class="close-reveal-modal">&#215;</a>
+        
     </div>
     <hr/> 
   </div>
 
-  <div class="large-3 columns">
-    <img src="http://placehold.it/100x100&text=[<%= r.score %>]"/>
+  <div class="large-2 columns">
+    <%= render '/reviews/score', :review => r %>
   </div>
+  <% end %>
 </div>
 
-<% end %>
+
 
 What do you have to say? <a href="/reviews/new?">Write a summary of your own</a>.
 

@@ -5,7 +5,20 @@ class ReviewsController < ApplicationController
   # GET /reviews
   # GET /reviews.json
   def index
-    @reviews = Review.all
+    #@reviews = Review.all
+    @reviews = Review.page(params[:page]).order('score DESC')
+  end
+
+  
+  def flag
+    @review = Review.find(params[:id])
+    if @review.flag == nil
+      @review.flag = 1
+    else
+      @review.flag +=1 
+    end
+    @review.save
+    redirect_to @review, notice: "Review has been flagged." 
   end
   
   #Used for upvote and delete_vote
@@ -88,13 +101,12 @@ class ReviewsController < ApplicationController
   end
 
   # DELETE /reviews/1
-  # DELETE /reviews/1.json
   def destroy
     if current_user.id != @review.user_id
       redirect_to @review, notice: "You aren't authorized to do that, man."
     else 
       @review.destroy
-      redirect_to action: "index", notice: "Summary removed."
+      redirect_to reviews_path, notice: "Summary removed."
     end 
     #If no other reviews for movie & it's a useless entry (without api id), destroy it
     @recent_movie = Movie.where(id:@review.movie_id).last

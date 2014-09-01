@@ -13,35 +13,31 @@
         </div>
         <% end %>
 
-        <div class="panel">
-          <%= @review.summary %>
-        </div>
-
-        <!-- author/edit breakaway -->
-        <div class="row">
-          <div class="large-7 columns">
-            <%= link_to 'Edit', edit_review_path(@review) %> | <%= link_to 'Delete', review_path(@review), :method => :delete %> 
-          </div>
-          <div align="right" class="large-5 columns">
-            Posted by <strong><%= link_to @review.user.username, @review.user %></strong>
-          </div>
-        </div>
-        <!-- end breakaway -->
+      <%= render 'summary', :review => @review %>
+      
       </div>
     
       <div align="center" class="large-2 columns">
-        <img src="http://placehold.it/80x80&text=<%= @review.score %>"/><br><br>
-        <!-- Show appropriate voting button -->
-        <% if current_user != nil %>
-          <%  if Vote.where(review_id:@review, user_id:current_user.id).count < 1 %>
-            <%= button_to '+1', upvote_review_path(@review), method: :post, :class => "button small radius round" %>
-          <% else %>
-            <%= button_to '-1', delete_vote_review_path(@review), method: :post, :class => "button small radius round alert" %>
-          <% end %>
-        <% else %>
-          Login to vote!<br>
-        <% end %>
+        
+        <%= render '/reviews/score', :review => @review %>
+        
       </div>
     </div>
+  
+  
+  
+<p><a href="#" data-reveal-id="firstModal"><img src="http://png-2.findicons.com/files/icons/2564/max_mini_icon/16/flag_red.png"></a>
+<!-- Reveal Modals begin -->
+<div id="firstModal" class="reveal-modal" data-reveal>
+  <h2>Flag this summary?</h2>
+  <p>Summaries which are flagged are reviewed by a moderator for invalid or inappropriate data.</p>
+  <p>Are you sure you want to flag this summary?</p>
+  <p><%= button_to "Yes I'm sure", flag_review_path, class:"secondary radius button", method:"get" %>
+  <a class="close-reveal-modal">&#215;</a>
+</div>
+
+  
+  
   </div>
 </div>
+

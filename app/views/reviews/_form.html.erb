@@ -1,16 +1,3 @@
-<%= form_for(@review) do |f| %>
-  <% if @review.errors.any? %>
-    <div id="error_explanation">
-      <%= pluralize(@review.errors.count, "error") %> prohibited this review from being saved:
-
-      <ul>
-      <% @review.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
 <script src="typehead.js"></script>
 <script>
 var substringMatcher = function(strs) {
@@ -41,6 +28,21 @@ $('#title .typeahead').typeahead({
 });
 </script>
 
+<%= form_for(@review) do |f| %>
+  <% if @review.errors.any? %>
+    <div id="error_explanation">
+      <%= pluralize(@review.errors.count, "error") %> prohibited this review from being saved:
+
+      <ul>
+      <% @review.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+
 <div class="field" id="title">
     <% if action_name == "new" %>
       <%= f.label :movie_title, "Movie Title" %><br>
@@ -48,29 +50,43 @@ $('#title .typeahead').typeahead({
     <% end %>
   </div>
 
-
   <div class="field">
     <%= f.label :summary %><br>
-    <%= f.text_area :summary %>
+    <%= f.text_area :summary, id: "summary"%>
   </div>
+  <div id="chars">140</div>
 
-
- <!--For character count -->
-<script type="text/javascript">
-  $(document).ready(function() {
-  $("#review_summary").keyup(function() {
-    var counter = $("#bbb");
-    var charsRemaining = 140 - $(this).val().length;
-    counter.text(charsRemaining);
-    counter.css('color', (charsRemaining < 0) ? 'red' : 'black');
-  });
-});
+<!-- For character counting -->
+<script>
+(function($) {
+    $.fn.extend( {
+        limiter: function(limit, elem) {
+            $(this).on("keyup focus", function() {
+                setCount(this, elem);
+            });
+            function setCount(src, elem) {
+                var chars = src.value.length;
+                if (chars > limit) {
+                    src.value = src.value.substr(0, limit);
+                    chars = limit;
+                }
+                elem.html( limit - chars );
+            }
+            setCount($(this)[0], elem);
+        }
+    });
+})(jQuery);
+</script>
+<script>
+var elem = $("#chars");
+$("#summary").limiter(140, elem);
 </script>
 
-<!-- Contains character count -->
-<div id="bbb"></div>
+
 
   <div class="actions">
     <%= f.submit "Submit", :class => "button radius" %>
   </div>
 <% end %>
+    
+    

@@ -63,6 +63,17 @@ class MoviesController < ApplicationController
     end
   end
   
+  def flag
+    @movie = Movie.find(params[:id])
+    if @movie.flag == nil
+      @movie.flag = 1
+    else
+      @movie.flag +=1 
+    end
+    @movie.save
+    redirect_to @movie, notice: "Movie has been flagged." 
+  end
+  
   def profile
     @movie = Movie.find(params[:id])
   end

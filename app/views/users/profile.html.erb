@@ -1,5 +1,4 @@
-
-
+<!-- user profile -->
 <h2> <%= @user.username %> </h2>
 <% if current_user && current_user.id == @user_id %>
  <a href="/users/edit">Edit Your Profile</a>
@@ -12,23 +11,14 @@
   <div class="large-10 columns">
     <div class="row">
       <div align="center" class="large-2 columns">
-        <img src="http://placehold.it/80x80&text=<%= review.score %>"/>
-        </br></br>
-        <% if current_user != nil %>
-         <%  if Vote.where(review_id:review, user_id:current_user.id).count < 1 %>
-          <%= button_to '+1', upvote_review_path(review), method: :post, :class => "button tiny radius round" %>
-         <% else %>
-          <%= button_to '-1', delete_vote_review_path(review), method: :post, :class => "button tiny radius round alert" %>
-         <% end %>
-        <% end %>
+        
+        <%= render '/reviews/score', :review => review %>
+        
       </div>
       <div class="large-10 columns">
-        <div class="panel">
-          <p><%= review.summary %></br></br></br>
-        </div>
-          <ul class="inline-list">
-            <li><%= link_to 'Edit', edit_review_path(review) %></li><li> <%= link_to 'Show', review %></li><li><%= link_to 'Delete', review_path(review), :method => :delete %></li>
-          </ul>
+        
+        <%= render '/reviews/summary', :review => review %>
+        
       </div>
     </div>
        
@@ -46,7 +36,8 @@
     <% else %>
     <%= link_to image_tag("http://placehold.it/80x80&text=!"), review.movie, class:"th" %>
     <% end %>
-      <br><strong><%= link_to review.movie.name, review.movie %></strong>
+      <% if review.movie.name.length > 20 %><small><% end %>
+      <br><strong><%= link_to review.movie.name, review.movie %></strong></small>
     </center>
   </div>
 </div>

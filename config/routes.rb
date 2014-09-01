@@ -7,9 +7,6 @@ Rails.application.routes.draw do
     end
   end
   
-  #Votes
-  #get '/votes(.:format)' => 'votes#show'
-  #post '/votes(.:format)' => 'votes#create'
 
   root :to => "reviews#index"
   
@@ -17,6 +14,11 @@ Rails.application.routes.draw do
   get '/users/:id' => 'users#profile', as: :user
   get '/movies/confirm/:id' => 'movies#confirm', as: :confirm_movie
   get '/movies/confirm/:id/update_information' => 'movies#confirm_dbid', as: :confirm_dbid_movie
+  get '/reviews/:id/flag' => 'reviews#flag', as: :flag_review
+  get '/movies/:id/flag' => 'movies#flag', as: :flag_movie
+  
+  get '/flagged' => 'statics#flagged', as: :flagged
+  get '/about' => 'statics#about', as: :about
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

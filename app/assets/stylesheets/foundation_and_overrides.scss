@@ -116,7 +116,7 @@ $include-html-global-classes: $include-html-classes;
 //$primary-color: #504e85;
 $primary-color: #4e856b;
 $secondary-color: #6b4e85;
-$alert-color: #856b4e;
+$alert-color: #854e84;
 $success-color: #FAFAFA ;
 $warning-color: #856b4e;
 $info-color: #4e6885;
@@ -976,27 +976,28 @@ $alert-font-color-alt: #AAAAAA;
 // $include-html-pricing-classes: $include-html-classes;
 
 // We use this to control the border color
-// $price-table-border: solid 1px $gainsboro;
+$price-table-border: solid 1px $secondary-color;
 
 // We use this to control the bottom margin of the pricing table
-// $price-table-margin-bottom: rem-calc(20);
+ $price-table-margin-bottom: rem-calc(5);
 
 // We use these to control the title styles
-// $price-title-bg: $oil;
-// $price-title-padding: rem-calc(15 20);
+$price-title-bg: $secondary-color;
+$price-title-padding: rem-calc(10 20);
 // $price-title-align: center;
 // $price-title-color: $smoke;
 // $price-title-weight: $font-weight-normal;
-// $price-title-size: rem-calc(16);
+$price-title-size: 8px;
 // $price-title-font-family: $body-font-family;
+$price-title-letter-spacing: 8px;
 
 // We use these to control the price styles
 // $price-money-bg: $vapor  ;
-// $price-money-padding: rem-calc(15 20);
+$price-money-padding: rem-calc(30 40);
 // $price-money-align: center;
 // $price-money-color: $oil;
-// $price-money-weight: $font-weight-normal;
-// $price-money-size: rem-calc(32);
+$price-money-weight: bold;
+$price-money-size: 20px;
 // $price-money-font-family: $body-font-family;
 
 // We use these to control the description styles
@@ -1366,7 +1367,7 @@ $alert-font-color-alt: #AAAAAA;
 // $topbar-bg: $topbar-bg-color;
 
 // Height and margin
-// $topbar-height: 45px;
+$topbar-height: 150px;
 // $topbar-margin-bottom: 0;
 
 // Controlling the styles for the title in the top bar

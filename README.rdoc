@@ -5,14 +5,20 @@ http://www.colorhexa.com/6b4e85
 - Character counter broken on new but works on edit
 
 IMPL:
-- badges (think about interactions between badges and guest users)
-- add flags to fields so users can flag a review/movie/etc. for review
+- pagination - in the works
 - Guest users w/ auto usernames (look into modals for warning about sessions)
-- remove delete from index and put on profile page
 - Spoiler notice (dog tooltip?)
 - sorting on homepage/elsewhere (user page, etc.)
-- user avatar implementation?
 
+EXTRAS
+- badges (think about interactions between badges and guest users)
+- user avatar implementation?
+- twitter/fb login?
+
+
+- remove delete from index and put on profile page - SOLVED
+- add flags to fields so users can flag a review/movie/etc. for review - DONE
+- Break sections into new erb pages - DONE
 - lock down confirmations - DONE
 - save all movie names downcase / STRIKE - compare downcases so that we cna pull straight from movie db - DONE
 - what to do if no results on name correction? Generate flag notice - DONE
