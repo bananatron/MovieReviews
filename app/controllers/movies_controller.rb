@@ -84,6 +84,7 @@ class MoviesController < ApplicationController
   
   def profile
     @movie = Movie.find(params[:id])
+    @movie_reviews = Review.where(movie_id: params[:id]).paginate(:page => params[:page]).order('score DESC')
   end
   
 end

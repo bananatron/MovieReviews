@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   
   #Page limit per page
-  WillPaginate.per_page = 8
+  WillPaginate.per_page = 7
   
   #Added for usename login
    before_filter :configure_permitted_parameters, if: :devise_controller?

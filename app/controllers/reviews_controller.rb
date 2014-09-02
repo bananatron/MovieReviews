@@ -6,10 +6,29 @@ class ReviewsController < ApplicationController
   # GET /reviews.json
   def index
     #@reviews = Review.all
-    @reviews = Review.page(params[:page]).order('score DESC')
+    @top_reviews = Review.page(params[:page]).order('score DESC')
+    @hot_reviews = Review.where('created_at >= ?', 1.week.ago).paginate(:page => params[:page]).order('score DESC')
+    @recent_reviews = Review.page(params[:page]).order('created_at DESC')
+    @reviews = @hot_reviews
   end
 
-  
+  def sort
+    @sort = params[:sort]
+      if @sort == "top"
+        @reviews = Review.page(params[:page]).order('score DESC')
+      end
+      if @sort == "hot"
+        @reviews = Review.where('created_at >= ?', 1.week.ago).paginate(:page => params[:page]).order('score DESC')
+      end
+      if @sort == "recent"
+        @reviews = Review.page(params[:page]).order('created_at DESC')
+      else
+        @reviews = Review.page(params[:page]).order('score DESC')
+      end
+    render action: :index
+  end
+
+
   def flag
     @review = Review.find(params[:id])
     if @review.flag == nil

@@ -7,6 +7,7 @@ gem 'hashugar'
 gem 'themoviedb'
 gem 'foundation-rails'
 gem 'will_paginate'
+gem 'pg'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use SCSS for stylesheets

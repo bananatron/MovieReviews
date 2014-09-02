@@ -38,21 +38,23 @@
           
           
   <div class="row">
-    <div class="large-8 columns">
-        <% if notice || alert %>
+    <div class="large-12 columns">
+          <% if notice || alert %>
         <div data-alert class="alert-box secondary">
-         <p class="notice"><%= notice %></p>
-         <p class="alert"><%= alert %></p>
-          <a href="" class="close">&times;</a>
+           <p class="notice"><%= notice %></p>
+           <p class="alert"><%= alert %></p>
+            <a href="" class="close">&times;</a>
+           <% end %>
         </div>
-        <% end %>
     </div>
+</div>
+  
  <br><br>
-
+<div class="row">
     <div class="large-12 columns">
      <%= yield %>
      </div>
-    </div>
+</div>
    
  
   <footer class="row">

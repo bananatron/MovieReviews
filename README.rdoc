@@ -1,21 +1,22 @@
 ISSUES:
 http://www.colorhexa.com/6b4e85
-- Make title editable before confirmation to research
-- Movie autocomplete - BROKEN
-- Character counter broken on new but works on edit
 
 IMPL:
-- pagination - in the works
-- Guest users w/ auto usernames (look into modals for warning about sessions)
-- Spoiler notice (dog tooltip?)
-- sorting on homepage/elsewhere (user page, etc.)
+
+
 
 EXTRAS
 - badges (think about interactions between badges and guest users)
 - user avatar implementation?
 - twitter/fb login?
+- Guest users w/ auto usernames (look into modals for warning about sessions)
 
-
+- sorting on homepage/elsewhere (user page, etc.)
+- Spoiler notice (dog tooltip?) DONE
+- pagination - DONE ( movies, reviews/index, users)
+- Make title editable before confirmation to research - FIXED
+- Movie autocomplete - FIXED via silas
+- Character counter broken on new but works on edit - FIXED via silas
 - remove delete from index and put on profile page - SOLVED
 - add flags to fields so users can flag a review/movie/etc. for review - DONE
 - Break sections into new erb pages - DONE

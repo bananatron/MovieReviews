@@ -1,38 +1,44 @@
 <!-- Movie profile -->
 <div class="row">
-  <div class="large-2 columns">
-    <% if @movie.image %>
-     <img src="http://image.tmdb.org/t/p/w300<%= @movie.image %>" class="th" />
-    <% else %>
-     <img src="http://placehold.it/180x100&text=No Image"/>
-    <% end %>
-  </div>
+    <div class="large-2 columns">
+      <% if @movie.image %>
+       <img src="http://image.tmdb.org/t/p/w300<%= @movie.image %>" class="th" />
+      <% else %>
+       <img src="http://placehold.it/180x100&text=No Image"/>
+      <% end %>
+    </div>
   
-  <div class="large-10 columns">
-    <h1><%= @movie.name %> <% if @movie.year %><small><i> (<%= @movie.year %>)</i></small><% end %> </h1>
-  </div>
+    <div class="large-10 columns">
+      <h1><%= @movie.name %> <% if @movie.year %><small><i> (<%= @movie.year %>)
+      </i></small><% end %> </h1>
+    </div>
 </div>
 <!-- end first row -->
 
-<% if @movie.moviedb_id == nil %>
-<div class="panel callout radius">
-  We can't get much information about this movie, and it's really bumming everyone out. 
-  Can you <%= link_to 'help identify it?', confirm_movie_path(@movie) %></a>
+<div class="row">
+  <div class="large-12 columns">
+      <% if @movie.moviedb_id == nil %>
+      <div class="panel callout radius">
+        We can't get much information about this movie, and it's really bumming everyone out. 
+        Can you <%= link_to 'help identify it?', confirm_movie_path(@movie) %></a>
+      </div>
+      <% end %>
+      <br><br>
+      <h4>Some popular summaries for <%= @movie.name   %>:</h4>
+  </div>
 </div>
-<% end %>
-<br><br>
-<h4>Some popular summaries for <%= @movie.name   %>:</h4>
+
 
 
 <div class="row">
 
-  <% Review.where(movie_id: @movie.id).order(:score).limit(20).each do |r|%>
+  <% @movie_reviews.each do |r|%>
   
    <div class="large-10 columns">
     <%= render '/reviews/summary', :review => r %>
      
      <!-- Flag info -->
-    <p><a href="#" data-reveal-id="firstModal"><img src="http://png-2.findicons.com/files/icons/2564/max_mini_icon/16/flag_red.png"></a>
+    <p><a href="#" data-reveal-id="firstModal"><%= image_tag 'flag.png' %></a>
     <!-- Reveal Modals begin -->
     <div id="firstModal" class="reveal-modal" data-reveal>
 
@@ -59,10 +65,16 @@
     <%= render '/reviews/score', :review => r %>
   </div>
   <% end %>
+  
 </div>
 
 
 
-What do you have to say? <a href="/reviews/new?">Write a summary of your own</a>.
+<div class="row">
+  <div class="large-12 columns">
+    What do you have to say about <%= @movie.name %>?  <a href="/reviews/new?">Write a summary of your own</a>.
+  </div>
+</div>
 
+<center><strong>    <%= will_paginate @movie_reviews %></center></strong>
 

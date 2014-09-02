@@ -1,3 +1,15 @@
+<div class="row">
+
+<aside align="right" class="large-2 columns right">
+<ul id="drop" class="f-dropdown content" data-dropdown-content>
+  <li align="left"><%= link_to 'Hottest', sort_reviews_by_path('hot') %></li>
+  <li align="left"><%= link_to 'Recent', sort_reviews_by_path('recent') %></li>
+  <li align="left"><%= link_to 'Score', sort_reviews_by_path('top') %></li>
+</ul>
+  &nbsp;&nbsp;&nbsp;<a href="#" data-dropdown="drop" class="tiny button dropdown">Sort By</a>
+</aside>
+</div>
+  
 
 <% @reviews.each do |review| %>
 <div class="row">
@@ -39,4 +51,7 @@
 </div>
 
  <% end %>
-<%= will_paginate @posts %>
+
+<div class="row">
+  <center><%= will_paginate @posts, :page_links => false %></center>
+</div>

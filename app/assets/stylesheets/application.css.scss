@@ -33,7 +33,6 @@ a:hover {
   height: 140px;
   color: #FFFFFF;
 }
-
 $low : #171717;
 
 .score_container {
@@ -72,6 +71,59 @@ $low : #171717;
 
 
 
+/* Pagination styling 
+
+504e85 - low
+$low : #171717;
+*/
+
+.pagination {
+  font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+  background: white;
+  cursor: default;
+  /* self-clearing method: */ }
+  .pagination a, .pagination span, .pagination em {
+    padding: 0.2em 0.5em;
+    display: inline ;
+    align: center;
+    margin-right: 1px; }
+  .pagination .disabled {
+    color: #999999;
+    border: 0px solid #dddddd; }
+  .pagination .current {
+    font-style: normal;
+    font-weight: bold;
+    background: #504e85;
+    color: white;
+    border: 0px solid #504e85; }
+  .pagination a {
+    text-decoration: none;
+    color: #171717;
+    border: 0px solid #171717; }
+    .pagination a:hover, .pagination a:focus {
+      color: #000033;
+      border-color: #000033; }
+  .pagination .page_info {
+    background: #504e85;
+    color: white;
+    padding: 0.4em 0.6em;
+    width: 22em;
+    margin-bottom: 0.3em;
+    text-align: center; }
+    .pagination .page_info b {
+      color: #000033;
+      background: #6aa6ed;
+      padding: 0.1em 0.25em; }
+  .pagination:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden; }
+  * html .pagination {
+    height: 1%; }
+  *:first-child + html .pagination {
+    overflow: hidden; }
 
 /*Typehead stuff*/
 
@@ -121,5 +173,3 @@ $low : #171717;
 .tt-suggestion p {
     margin: 0;
 }
-
-

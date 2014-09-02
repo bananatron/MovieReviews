@@ -9,7 +9,8 @@ Rails.application.routes.draw do
   
 
   root :to => "reviews#index"
-  
+
+  get '/reviews/sort/:sort' => 'reviews#sort', as: :sort_reviews_by
   get '/movies/:id' => 'movies#profile', as: :movie
   get '/movies_list' => 'movies#movies_list'
   get '/users/:id' => 'users#profile', as: :user
