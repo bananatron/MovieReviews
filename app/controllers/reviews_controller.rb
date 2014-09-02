@@ -18,7 +18,7 @@ class ReviewsController < ApplicationController
       @review.flag +=1 
     end
     @review.save
-    redirect_to @review, notice: "Review has been flagged." 
+    redirect_to @review, notice: "Summary has been flagged!" 
   end
   
   #Used for upvote and delete_vote
@@ -78,7 +78,7 @@ class ReviewsController < ApplicationController
       if @review.movie.moviedb_id == nil
         redirect_to confirm_movie_path(@review.movie)
       else
-        redirect_to @review, notice: 'Review was successfully created.' 
+        redirect_to @review, notice: 'Summary was successfully created.' 
       end
     else 
       redirect_to :back, notice: 'Something is wrong: ' + @review.errors.first.to_s
@@ -91,7 +91,7 @@ class ReviewsController < ApplicationController
   def update
     respond_to do |format|
       if @review.update(review_params)
-        format.html { redirect_to @review, notice: 'Review was successfully updated.' }
+        format.html { redirect_to @review, notice: 'Summary was successfully updated.' }
         format.json { render :show, status: :ok, location: @review }
       else
         format.html { render :edit }
@@ -106,7 +106,7 @@ class ReviewsController < ApplicationController
       redirect_to @review, notice: "You aren't authorized to do that, man."
     else 
       @review.destroy
-      redirect_to reviews_path, notice: "Summary removed."
+      redirect_to reviews_path, notice: "Summary removed!"
     end 
     #If no other reviews for movie & it's a useless entry (without api id), destroy it
     @recent_movie = Movie.where(id:@review.movie_id).last

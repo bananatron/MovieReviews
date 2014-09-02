@@ -1,6 +1,6 @@
 ISSUES:
 http://www.colorhexa.com/6b4e85
-
+- Make title editable before confirmation to research
 - Movie autocomplete - BROKEN
 - Character counter broken on new but works on edit
 

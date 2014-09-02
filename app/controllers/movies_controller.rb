@@ -1,4 +1,12 @@
 class MoviesController < ApplicationController
+  before_action :authenticate_user!, only: :movies_list
+  
+  def movies_list
+    @movies = Movie.where.not('moviedb_id' => nil).pluck(:name)
+    respond_to do |format|
+      format.json { render json: @movies }
+    end
+  end
     
   def create_core(title)
     core = title.downcase.split

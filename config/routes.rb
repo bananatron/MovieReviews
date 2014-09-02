@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   root :to => "reviews#index"
   
   get '/movies/:id' => 'movies#profile', as: :movie
+  get '/movies_list' => 'movies#movies_list'
   get '/users/:id' => 'users#profile', as: :user
   get '/movies/confirm/:id' => 'movies#confirm', as: :confirm_movie
   get '/movies/confirm/:id/update_information' => 'movies#confirm_dbid', as: :confirm_dbid_movie

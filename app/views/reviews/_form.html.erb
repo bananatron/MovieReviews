@@ -1,33 +1,6 @@
-<script src="typehead.js"></script>
 <script>
-var substringMatcher = function(strs) {
-  return function findMatches(q, cb) {
-    var matches, substrRegex;
-    matches = [];
-    substrRegex = new RegExp(q, 'i');
-    $.each(strs, function(i, str) {
-      if (substrRegex.test(str)) {
-        matches.push({ value: str });
-      }
-    });
-    cb(matches);
-  };
-};
-  
-  var movies = <%= raw @movie_names.to_json %>;
-  
-$('#title .typeahead').typeahead({
-  hint: true,
-  highlight: true,
-  minLength: 1
-},
-{
-  name: 'movies',
-  displayKey: 'value',
-  source: substringMatcher(movies)
-});
+  var movies_list_url = "<%= movies_list_url(format: :json) %>";
 </script>
-
 <%= form_for(@review) do |f| %>
   <% if @review.errors.any? %>
     <div id="error_explanation">
@@ -44,7 +17,7 @@ $('#title .typeahead').typeahead({
 
 
 <div class="field" id="title">
-    <% if action_name == "new" %>
+  <% if action_name == "new" || @review.movie.moviedb_id == nil %>
       <%= f.label :movie_title, "Movie Title" %><br>
       <%= f.text_field :movie_title, class: "typeahead" %>
     <% end %>
@@ -56,31 +29,7 @@ $('#title .typeahead').typeahead({
   </div>
   <div id="chars">140</div>
 
-<!-- For character counting -->
-<script>
-(function($) {
-    $.fn.extend( {
-        limiter: function(limit, elem) {
-            $(this).on("keyup focus", function() {
-                setCount(this, elem);
-            });
-            function setCount(src, elem) {
-                var chars = src.value.length;
-                if (chars > limit) {
-                    src.value = src.value.substr(0, limit);
-                    chars = limit;
-                }
-                elem.html( limit - chars );
-            }
-            setCount($(this)[0], elem);
-        }
-    });
-})(jQuery);
-</script>
-<script>
-var elem = $("#chars");
-$("#summary").limiter(140, elem);
-</script>
+
 
 
 
