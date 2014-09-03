@@ -1,6 +1,6 @@
 ISSUES:
 http://www.colorhexa.com/6b4e85
-
+https://www.openshift.com/developers
 IMPL:
 
 

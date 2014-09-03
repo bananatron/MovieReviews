@@ -52,7 +52,7 @@ var movies = grabJSON(movies_list_url);
 $('#title .typeahead').typeahead({
   hint: true,
   highlight: true,
-  minLength: 1
+  minLength: 3
 },
 {
   name: 'movies',

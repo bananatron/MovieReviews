@@ -20,14 +20,6 @@ test:
   <<: *default
   database: db/test.sqlite3
 
-#production:
-#  <<: *default
-#  database: db/production.sqlite3
-
 production:
-  adapter: postgresql
-  encoding: utf8
-  database: tldw_production
-  pool: 5
-  username: 
-  password:
+  <<: *default
+  database: db/production.sqlite3
