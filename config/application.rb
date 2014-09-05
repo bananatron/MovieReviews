@@ -9,6 +9,9 @@ Bundler.require(*Rails.groups)
 module Movies
   class Application < Rails::Application
     
+    #CSS Heroku issue
+    config.serve_static_assets = true
+    
     config.time_zone = 'Pacific Time (US & Canada)'
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
