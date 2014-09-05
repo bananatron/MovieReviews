@@ -60,3 +60,4 @@ $('#title .typeahead').typeahead({
   source: substringMatcher(movies)
 });
 
+$(function(){ $(document).foundation(); });
