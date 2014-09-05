@@ -8,6 +8,7 @@ gem 'themoviedb'
 gem 'foundation-rails'
 gem 'will_paginate'
 gem 'pg'
+gem 'google-analytics-rails'
 # Use sqlite3 as the database for Active Record
 #gem 'sqlite3'
 # Use SCSS for stylesheets

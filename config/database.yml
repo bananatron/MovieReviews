@@ -8,6 +8,14 @@
 #  host: <%= ENV['TODO_APP_DEV_HOST'] %>
 #  port: <%= ENV['TODO_APP_DEV_PORT'] %>
 
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: movies_prod
+  pool: 5
+  host: localhost
+  username: action
+  password:
 
 development:
   adapter: postgresql
@@ -22,15 +30,6 @@ test:
   adapter: postgresql
   encoding: unicode
   database: movies_test
-  pool: 5
-  host: localhost
-  username: action
-  password:
-
-production:
-  adapter: postgresql
-  encoding: unicode
-  database: movies_prod
   pool: 5
   host: localhost
   username: action
