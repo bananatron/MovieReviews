@@ -4,8 +4,6 @@ Rails.application.configure do
   # Analytics tracking
   GA.tracker = "UA-54457927-1"
   
-  
-  
   # Code is not reloaded between requests.
   config.cache_classes = true
 
@@ -25,7 +23,7 @@ Rails.application.configure do
   # config.action_dispatch.rack_cache = true
 
   # Disable Rails's static asset server (Apache or nginx will already do this).
-  config.serve_static_assets = false
+  #config.serve_static_assets = false
 
   # Compress JavaScripts and CSS.
   config.assets.js_compressor = :uglifier
@@ -86,9 +84,8 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
   
   #CSS Load issues
-  #config.cache_classes = true
+  config.cache_classes = true
   config.serve_static_assets = true
-  #config.assets.compile = true
-  #config.assets.digest = true
+  config.assets.compile = true
   
 end

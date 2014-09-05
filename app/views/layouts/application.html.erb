@@ -68,7 +68,9 @@
         <div class="large-7 columns">
           <ul class="inline-list right">
             <li><%= link_to 'About', about_path %></li>
+            <% if current_user %>
             <li><%= link_to 'Sign Out', destroy_user_session_path, :method => :delete %></li>
+            <% end %>
           </ul>
         </div>
       </div>
