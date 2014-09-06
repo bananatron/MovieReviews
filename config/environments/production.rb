@@ -117,6 +117,6 @@ Rails.application.configure do
   #config.assets.digest = true
   
   #Foundation fix
-  config.assets.debug = true
+  #config.assets.debug = true
   
 end
