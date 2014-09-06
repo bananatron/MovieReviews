@@ -7,7 +7,7 @@ Rails.application.configure do
   # Code is not reloaded between requests.
   config.cache_classes = true
   
-  #config.assets.precompile += %w( foundation.min.js )
+  config.assets.precompile += %w( foundation.min.js )
 
   # Eager load code on boot. This eager loads most of Rails and
   # your application in memory, allowing both threaded web servers
@@ -26,6 +26,7 @@ Rails.application.configure do
 
   # Disable Rails's static asset server (Apache or nginx will already do this).
   # Had to disable because css wasn't being loaded on heroku
+  # Installed rails12factor which likely nullifies this anyway
   config.serve_static_assets = false
 
   # Compress JavaScripts and CSS.
