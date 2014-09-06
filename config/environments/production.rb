@@ -107,9 +107,9 @@ Rails.application.configure do
     }
   
   #CSS Load issues
-  config.cache_classes = true
-  config.serve_static_assets = true
-  config.assets.compile = true
-  config.assets.digest = true
+  #config.cache_classes = true
+  #config.serve_static_assets = true
+  #config.assets.compile = true
+  #config.assets.digest = true
   
 end
