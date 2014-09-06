@@ -44,6 +44,9 @@ Rails.application.configure do
 config.action_mailer.raise_delivery_errors = true
   #Devise
 #  ::SITE_DOMAIN = "tldwmovies.com"
+
+  
+config.assets.precompile += %w( foundation.js )
   
 config.action_mailer.delivery_method = :smtp
 
