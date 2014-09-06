@@ -35,7 +35,7 @@
     </div>
  
 
-  <aside class="large-2 columns hide-for-small">
+  <aside class="large-2 columns">
       <% poster_path = review.movie.image %>
       <% if poster_path != nil %>
       <center><%= link_to image_tag("http://image.tmdb.org/t/p/w130"+poster_path), review, class:"th" %> </br>
