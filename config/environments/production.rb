@@ -5,7 +5,10 @@ Rails.application.configure do
   GA.tracker = "UA-54457927-1"
   
   # Code is not reloaded between requests.
-  config.cache_classes = true
+  #Fix this after foundation is figured out?
+  config.cache_classes = false
+  
+  config.assets.precompile += %w( foundation.js )
 
   # Eager load code on boot. This eager loads most of Rails and
   # your application in memory, allowing both threaded web servers
