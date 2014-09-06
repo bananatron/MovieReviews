@@ -7,14 +7,14 @@ Devise.setup do |config|
   # config.secret_key = '04f6a9d24dc0848321be9ed2b6616fc3a4cb1ce317f3afd239b94a3de9191c028fc03a31b0a1d5cfa9a2761b884196a27e86e94b20035c25eea502aaffd73643'
 
   #Fix for precompile issue
-  config.secret_key = '-- secret key --'
+  #config.secret_key = '-- secret key --'
 
   
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
-  config.mailer_sender = 'donotreply@tldrmovies.com'
+  config.mailer_sender = 'tldwmovies@gmail.com'
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
