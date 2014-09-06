@@ -36,8 +36,8 @@ Rails.application.configure do
   config.assets.compile = false
 
   # Generate digests for assets URLs.
-  # Set this to false for foundation to work
-  config.assets.digest = true
+  # Set this to false for foundation to work - if I do it seems to break styles though
+  config.assets.digest = false
 
   # `config.assets.precompile` has moved to config/initializers/assets.rb
 
