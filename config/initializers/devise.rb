@@ -4,7 +4,7 @@ Devise.setup do |config|
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
   # confirmation, reset password and unlock tokens in the database.
-  # config.secret_key = '04f6a9d24dc0848321be9ed2b6616fc3a4cb1ce317f3afd239b94a3de9191c028fc03a31b0a1d5cfa9a2761b884196a27e86e94b20035c25eea502aaffd73643'
+  config.secret_key = '4a45c22c1f416cd9fa9c01ef32efdb3a65a84bb8a5b14be7f65b072ac9e794b9741b71171b6282b4d7d4d1676b9cb2369d0a193679fc862e4936615440213421'
 
   #Fix for precompile issue
   #config.secret_key = '-- secret key --'
