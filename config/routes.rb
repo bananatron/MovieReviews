@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   
   get '/flagged' => 'statics#flagged', as: :flagged
   get '/about' => 'statics#about', as: :about
+  get '/version' => 'statics#version', as: :version
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
