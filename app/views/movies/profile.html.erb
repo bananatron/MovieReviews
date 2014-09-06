@@ -38,8 +38,8 @@
     <%= render '/reviews/summary', :review => r %>
      
      <!-- Flag info -->
-     <%= link_to image_tag('flag.png'), flag_movie_path %>
-<!--
+     <!--<%= link_to image_tag('flag.png'), flag_movie_path %>-->
+
     <p><a href="#" data-reveal-id="firstModal"><%= image_tag 'flag.png' %></a>
     <!-- Reveal Modals begin -->
     <div id="firstModal" class="reveal-modal" data-reveal>
@@ -48,7 +48,7 @@
         <div class="large-8 columns">
           <h2>Flag this movie?</h2>
           <p>Movies which are flagged are reviewed by a moderator for invalid or inappropriate data.</p>
-          <p>Are you sure you want to flag <%= @movie.name %>?</p>
+          <p>Are you sure you want to flag <b><%= @movie.name %></b>?</p>
           
                     <p><%= button_to "Yes I'm sure", flag_movie_path, class:"secondary radius button", method:"get" %>
         </div>
@@ -58,7 +58,6 @@
         </div>
       <a class="close-reveal-modal">&#215;</a>
       </div> <!-- end flag row --> 
-       --> 
     </div>
     <hr/> 
   </div>
