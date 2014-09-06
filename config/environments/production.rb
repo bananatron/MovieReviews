@@ -87,7 +87,7 @@ Rails.application.configure do
   #Devise
   ::SITE_DOMAIN = "tldwmovies.com"
   
-  config.action_mailer.default_url_options = { :host => 'www.tldrmovies.com' }
+  config.action_mailer.default_url_options = { :host => 'www.tldwmovies.com' }
   #if heroku errors do this
   #Rails.application.routes.default_url_options[:host] = 'yoursite.herokuapp.com'
   
