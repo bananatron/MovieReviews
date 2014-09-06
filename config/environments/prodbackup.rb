@@ -5,10 +5,9 @@ Rails.application.configure do
   GA.tracker = "UA-54457927-1"
   
   # Code is not reloaded between requests.
-  #Fix this after foundation is figured out?
-  config.cache_classes = false
+  config.cache_classes = true
   
-  #config.assets.precompile += %w( foundation.min.js )
+  config.assets.precompile += %w( foundation.min.js )
 
   # Eager load code on boot. This eager loads most of Rails and
   # your application in memory, allowing both threaded web servers
@@ -27,16 +26,18 @@ Rails.application.configure do
 
   # Disable Rails's static asset server (Apache or nginx will already do this).
   # Had to disable because css wasn't being loaded on heroku
-  #config.serve_static_assets = false
+  # Installed rails12factor which likely nullifies this anyway
+  config.serve_static_assets = false
 
   # Compress JavaScripts and CSS.
-  config.assets.js_compressor = :uglifier
+  #config.assets.js_compressor = :uglifier
   # config.assets.css_compressor = :sass
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
   config.assets.compile = false
 
   # Generate digests for assets URLs.
+  # Set this to false for foundation to work - if I do it seems to break styles though
   config.assets.digest = true
 
   # `config.assets.precompile` has moved to config/initializers/assets.rb
@@ -65,7 +66,7 @@ Rails.application.configure do
 
   # Precompile additional assets.
   # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
-  config.assets.precompile += %w( foundation.js )
+  config.assets.precompile += %w( foundation.min.js )
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
@@ -111,8 +112,11 @@ Rails.application.configure do
   
   #CSS Load issues
   #config.cache_classes = true
-  #config.serve_static_assets = true
+  #config.serve_static_assets = true #done above
   #config.assets.compile = true
   #config.assets.digest = true
+  
+  #Foundation fix
+  #config.assets.debug = true
   
 end
