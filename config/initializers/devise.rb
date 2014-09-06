@@ -8,17 +8,13 @@ Devise.setup do |config|
 
   #Fix for precompile issue
   config.secret_key = '-- secret key --'
-  
-  #Added for username login
-  config.authentication_keys = [ :login ]
-  config.reset_password_keys = [ :username ]
-  config.confirmation_keys = [ :username ]
+
   
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
-  config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
+  config.mailer_sender = 'donotreply@tldrmovies.com'
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
@@ -103,6 +99,7 @@ Devise.setup do |config|
   # encryptor), the cost increases exponentially with the number of stretches (e.g.
   # a value of 20 is already extremely slow: approx. 60 seconds for 1 calculation).
   config.stretches = Rails.env.test? ? 1 : 10
+  config.stretches = Rails.env.production? ? 5 : 10
 
   # Setup a pepper to generate the encrypted password.
   # config.pepper = '03e09d2cccb2133725d334f688978bcdf2c33c420c6eb4c5f306d685a6057a8aa47d5bf5865e09b23f04a9e00ad602d3376a1b8bb5af6cc39cd45c61d13cf30f'
@@ -148,7 +145,7 @@ Devise.setup do |config|
 
   # ==> Configuration for :validatable
   # Range for password length.
-  config.password_length = 8..128
+  config.password_length = 4..128
 
   # Email regex used to validate email formats. It simply asserts that
   # one (and only one) @ exists in the given string. This is mainly
@@ -264,4 +261,10 @@ Devise.setup do |config|
   # When using omniauth, Devise cannot automatically set Omniauth path,
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = '/my_engine/users/auth'
+  
+    
+  #Added for username login
+  config.authentication_keys = [ :login ]
+  config.reset_password_keys = [ :username ]
+  config.confirmation_keys = [ :username ]
 end

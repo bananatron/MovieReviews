@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
   # This is in addition to a real persisted field like 'username' added for username login
   attr_accessor :login
   
-  #added for username login
+  #added for username login #removed for email password reset
   def self.find_first_by_auth_conditions(warden_conditions)
   conditions = warden_conditions.dup
   if login = conditions.delete(:login)
