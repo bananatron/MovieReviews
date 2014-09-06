@@ -61,5 +61,6 @@ password: ENV["GMAIL_PASSWORD"]
 
 
   config.assets.digest = false
+  config.serve_static_assets = false
   
 end
