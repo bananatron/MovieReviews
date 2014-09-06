@@ -1,5 +1,9 @@
 source 'https://rubygems.org'
 
+group :development, :test do
+gem 'foreman'
+end
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'devise'
 gem 'rails', '4.1.4'
