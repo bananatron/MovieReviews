@@ -59,5 +59,3 @@ $('#title .typeahead').typeahead({
   displayKey: 'value',
   source: substringMatcher(movies)
 });
-
-$(function(){ $(document).foundation(); });
