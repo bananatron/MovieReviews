@@ -42,11 +42,10 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
   
 config.action_mailer.raise_delivery_errors = true
-  #Devise
+#Devise
 #  ::SITE_DOMAIN = "tldwmovies.com"
 
-  
-config.assets.precompile += %w( foundation.js )
+
   
 config.action_mailer.delivery_method = :smtp
 
@@ -59,5 +58,8 @@ enable_starttls_auto: true,
 user_name: ENV["GMAIL_USERNAME"],
 password: ENV["GMAIL_PASSWORD"]
 }
+
+
+  config.assets.digest = false
   
 end

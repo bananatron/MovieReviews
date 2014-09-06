@@ -6,7 +6,7 @@ Rails.application.configure do
   
   # Code is not reloaded between requests.
   #Fix this after foundation is figured out?
-  config.cache_classes = false
+  config.cache_classes = true
   
   #config.assets.precompile += %w( foundation.min.js )
 
@@ -37,7 +37,8 @@ Rails.application.configure do
   config.assets.compile = false
 
   # Generate digests for assets URLs.
-  config.assets.digest = true
+  # Set this to false for foundation to work
+  config.assets.digest = false
 
   # `config.assets.precompile` has moved to config/initializers/assets.rb
 
