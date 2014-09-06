@@ -8,7 +8,7 @@ Rails.application.configure do
   #Fix this after foundation is figured out?
   config.cache_classes = false
   
-  config.assets.precompile += %w( foundation.js )
+  config.assets.precompile += %w( foundation.min.js )
 
   # Eager load code on boot. This eager loads most of Rails and
   # your application in memory, allowing both threaded web servers
