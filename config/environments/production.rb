@@ -38,9 +38,9 @@ Rails.application.configure do
 
   #config.serve_static_assets = true #done above
   #config.assets.precompile = true
-  config.assets.compile = true
+  config.assets.compile = false
   #config.assets.digest = true
-  
+  config.assets.precompile = ['*.js', '*.css', '*.css.erb']
 
  # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
