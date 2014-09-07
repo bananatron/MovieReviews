@@ -7,7 +7,7 @@ Devise.setup do |config|
 
 
   #Fix for precompile issue
-  #config.secret_key = '-- secret key --'
+  config.secret_key = ENV['SECRET_KEY_BASE']
 
   
   # ==> Mailer Configuration
