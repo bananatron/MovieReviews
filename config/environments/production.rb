@@ -21,20 +21,24 @@ Rails.application.configure do
   # Debug mode disables concatenation and preprocessing of assets.
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
-  #
-  config.assets.debug = false
+  config.assets.debug = true
 
   
   # Adds additional error checking when serving assets at runtime.
   # Checks for improperly declared sprockets dependencies.
   # Raises helpful error messages.
-  config.assets.raise_runtime_errors = true
+  config.assets.raise_runtime_errors = false
 
   
   # Raises error for missing translations
    config.action_view.raise_on_missing_translations = false
   
   config.action_mailer.raise_delivery_errors = false
+  
+
+  #config.serve_static_assets = true #done above
+  config.assets.compile = false
+  #config.assets.digest = true
   
 
  # Do not dump schema after migrations.
