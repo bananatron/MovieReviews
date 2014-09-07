@@ -1,22 +1,22 @@
-#development:
-#  adapter: postgresql
-#  encoding: unicode
-#  pool: 5
-#  database: <%= ENV['TODO_APP_DEV_DATABASE'] %>
-#  username: <%= ENV['TODO_APP_DEV_USER'] %>
-#  password: <%= ENV['TODO_APP_DEV_PASSWORD'] %>
-#  host: <%= ENV['TODO_APP_DEV_HOST'] %>
-#  port: <%= ENV['TODO_APP_DEV_PORT'] %>
-
-
 development:
   adapter: postgresql
   encoding: unicode
-  database: movies_dev
   pool: 5
-  host: localhost
-  username: action
-  password:
+  database: <%= ENV['TODO_APP_DEV_DATABASE'] %>
+  username: <%= ENV['TODO_APP_DEV_USER'] %>
+  password: <%= ENV['TODO_APP_DEV_PASSWORD'] %>
+  host: <%= ENV['TODO_APP_DEV_HOST'] %>
+  port: <%= ENV['TODO_APP_DEV_PORT'] %>
+
+
+#development:
+#  adapter: postgresql
+#  encoding: unicode
+#  database: movies_dev
+#  pool: 5
+#  host: localhost
+#  username: action
+#  password:
 
 production:
   adapter: postgresql
