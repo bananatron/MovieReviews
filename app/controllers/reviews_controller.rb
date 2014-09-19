@@ -9,7 +9,7 @@ class ReviewsController < ApplicationController
     @top_reviews = Review.page(params[:page]).order('score DESC')
     @hot_reviews = Review.where('created_at >= ?', 1.week.ago).paginate(:page => params[:page]).order('score DESC')
     @recent_reviews = Review.page(params[:page]).order('created_at DESC')
-    @reviews = @hot_reviews
+    @reviews = @top_reviews
   end
 
   def sort
