@@ -58,10 +58,6 @@ $low : #171717;
   background-color: $low;
 }
 
-
-
-
-
 .header_name {
   letter-spacing: 5px;
   font-size: 9px;
@@ -81,6 +77,26 @@ $low : #171717;
   text-align: center;
 }
 
+.score_text_small {
+  color: #FFF;
+  font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+  font-size: 60px;
+  font-weight: 900;
+  text-align: center;
+  display: inline-block;
+  line-height: 200px;
+}
+.dark_overlay {
+  background:rgba(0,0,0,0.5);
+  background-size: 100% auto;
+}
+
+.score_image_small{
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  height: 200px;
+  background-position: center center; 
+}
 
 
 /* Pagination styling 

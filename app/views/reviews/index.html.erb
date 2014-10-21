@@ -16,28 +16,30 @@
   <div class="large-10 columns">
  
     <div class="row">
-        <div align="center" class="large-2 columns small-3">
-          
-
+        <div align="center" class="large-2 columns small-3 show-for-large-only">
           <%= render 'score', :review => review %>
-
-          
         </div>
+          <div align="center" class="large-2 medium-3 small-5 columns show-for-medium-down">
+            <% poster_path = review.movie.image %>
+            <div class="score_image_small" style="background-image: url('http://image.tmdb.org/t/p/w130<%= poster_path %>')"><div class="dark_overlay">
+              <h1><span class="score_text_small"><%= review.score %></h1></span>
+              </div>
+            </div>
+            
 
-        <div class="large-10 columns">
-          
+        </div>
+        <div class="large-10 columns medium-9 small-7">
           <%= render 'summary', :review => review %>
-
         </div> 
       </div>
-
-     <br><br> <hr/>      
+<hr/> 
+     <br><br>      
     </div>
 
-  <aside class="large-2 columns">
+  <aside class="large-2 columns show-for-large-only">
       <% poster_path = review.movie.image %>
       <% if poster_path != nil %>
-    <center><%= link_to image_tag("http://image.tmdb.org/t/p/w130"+poster_path), review.movie, class:"th" %> </br>
+    <center><%= link_to image_tag("http://image.tmdb.org/t/p/w130"+poster_path), review.movie, class:"th" %>       </br>
         <% if review.movie.name.length > 20 %><small><% end %>
     <strong><%= link_to review.movie.name[ 0 .. 40 ], review.movie %></strong></center></small>
       <% else %>
@@ -45,7 +47,7 @@
       <% if review.movie.name.length > 20 %><small> <% end %>
       <strong><%= link_to review.movie.name, review.movie %></strong></center></small>
       <% end %>
-      <!--<p><%= review.score %></p>-->
+      
   </aside>
 </div>
 
