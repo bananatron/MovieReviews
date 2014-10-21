@@ -4,11 +4,11 @@
   <div class="score_bg"><span class="score_text"><%= review.score %></span></div>
 </div>
 
-<% if current_user != nil %>
-<%  if Vote.where(review_id:review, user_id:current_user.id).count < 1 %>
-<%= button_to '+1', upvote_review_path(review), method: :post, :class => "button small radius round " %>
-<% else %>
-<%= button_to '-1', delete_vote_review_path(review), method: :post, :class => "button small radius round alert" %>
-<% end %>
+<% if current_user %>
+  <%  if Vote.where(review_id:review, user_id:current_user.id).count < 1 %>
+  <%= button_to '+1', upvote_review_path(review), method: :post, :class => "button small radius round " %>
+  <% else %>
+  <%= button_to '-1', delete_vote_review_path(review), method: :post, :class => "button small radius round alert" %>
+  <% end %>
 <% end %>   
 </center>
