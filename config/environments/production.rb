@@ -1,6 +1,6 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
-
+  GA.tracker = "UA-xxxxxx-x"
   # Set to true for production
   config.cache_classes = true
 
