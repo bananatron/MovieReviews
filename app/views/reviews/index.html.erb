@@ -16,10 +16,10 @@
   <div class="large-10 columns">
  
     <div class="row">
-        <div align="center" class="large-2 columns small-3 show-for-large-only">
+        <div align="center" class="large-2 columns small-3 show-for-large-up">
           <%= render 'score', :review => review %>
         </div>
-          <div align="center" class="large-2 medium-3 small-5 columns show-for-medium-down">
+          <div align="center" class="large-2 medium-3 small-5 columns show-for-medium">
             <% poster_path = review.movie.image %>
             <div class="score_image_small" style="background-image: url('http://image.tmdb.org/t/p/w130<%= poster_path %>')"><div class="dark_overlay">
               <h1><span class="score_text_small"><%= review.score %></h1></span>
@@ -36,7 +36,7 @@
      <br><br>      
     </div>
 
-  <aside class="large-2 columns show-for-large-only">
+  <aside class="large-2 columns show-for-large-up">
       <% poster_path = review.movie.image %>
       <% if poster_path != nil %>
     <center><%= link_to image_tag("http://image.tmdb.org/t/p/w130"+poster_path), review.movie, class:"th" %>       </br>
