@@ -10,5 +10,7 @@
   <% else %>
   <%= button_to '-1', delete_vote_review_path(review), method: :post, :class => "button small radius round alert" %>
   <% end %>
+<% else %>
+  <%= button_to '+1', upvote_review_path(review), method: :post, :class => "button small radius round " %> 
 <% end %>   
 </center>
